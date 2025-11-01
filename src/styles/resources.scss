@@ -1,0 +1,121 @@
+.resources-hero {
+  background: linear-gradient(140deg, rgba(5, 7, 28, 0.95), rgba(20, 36, 80, 0.9));
+  color: #fff;
+}
+
+.resources-hero__inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.resources-hero .section__subtitle {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.resources-blog__grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.resources-blog__grid article {
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.97);
+  padding: 2.4rem;
+  border: 1px solid rgba(95, 46, 255, 0.08);
+  box-shadow: var(--shadow-soft);
+  display: grid;
+  gap: 1.25rem;
+}
+
+.resources-blog__date {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.resources-blog__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.resources-blog__cta {
+  justify-self: flex-start;
+}
+
+.resources-guides__grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.resources-guides__grid article {
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.97);
+  padding: 2.4rem;
+  border: 1px solid rgba(95, 46, 255, 0.08);
+  box-shadow: var(--shadow-soft);
+  display: grid;
+  gap: 1.2rem;
+}
+
+.resources-webinars {
+  background: linear-gradient(135deg, rgba(95, 46, 255, 0.14), rgba(45, 226, 211, 0.12));
+}
+
+.resources-webinars__grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.resources-webinars__grid article {
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.97);
+  padding: 2.2rem;
+  border: 1px solid rgba(95, 46, 255, 0.08);
+  box-shadow: var(--shadow-soft);
+  display: grid;
+  gap: 1rem;
+}
+
+.resources-webinars__date {
+  font-weight: 600;
+  color: var(--gradient-start);
+}
+
+.resources-careers {
+  background: #fff;
+}
+
+.resources-careers__inner {
+  max-width: 780px;
+  margin: 0 auto;
+  border-radius: var(--radius-lg);
+  padding: 2.6rem;
+  background: linear-gradient(140deg, rgba(5, 7, 28, 0.95), rgba(20, 36, 80, 0.92));
+  color: #fff;
+  display: grid;
+  gap: 1.5rem;
+  border: 1px solid rgba(124, 255, 178, 0.24);
+}
+
+@media (min-width: 920px) {
+  .resources-blog__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .resources-guides__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .resources-webinars__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .resources-careers__inner {
+    grid-template-columns: auto max-content;
+    align-items: center;
+  }
+}

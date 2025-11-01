@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="pulseGradient" x1="12%" y1="8%" x2="88%" y2="92%">
+      <stop offset="0%" stop-color="#5f2eff" />
+      <stop offset="45%" stop-color="#2de2d3" />
+      <stop offset="100%" stop-color="#7cffb2" />
+    </linearGradient>
+    <linearGradient id="pulseGlow" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.95)" />
+      <stop offset="100%" stop-color="rgba(255,255,255,0.65)" />
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="30" fill="#050516" />
+  <rect x="6" y="6" width="116" height="116" rx="26" fill="url(#pulseGradient)" />
+  <path
+    d="M28 66h14.5c3.4 0 6.4-2 7.7-5l7.6-17.3c1.5-3.4 6.3-3.4 7.8 0l15.4 35.2c1.3 3 5.7 3.4 7.6 0.7l7.8-11.5c2.3-3.4 7.5-3.2 9.5 0.5L104 84"
+    fill="none"
+    stroke="url(#pulseGlow)"
+    stroke-width="10"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <circle cx="86" cy="36" r="14" fill="rgba(255,255,255,0.2)" />
+  <circle cx="86" cy="36" r="8" fill="#050516" />
+  <circle cx="86" cy="36" r="4" fill="rgba(255,255,255,0.9)" />
+</svg>
