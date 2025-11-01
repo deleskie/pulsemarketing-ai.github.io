@@ -18,9 +18,20 @@ npm run build
 npm run preview   # optional: serve the production bundle locally
 ```
 
-## CI/CD
+## Testing
 
-The GitHub workflow (`.github/workflows/ci.yml`) installs dependencies, type-checks, and builds on pushes/PRs to `main`. Hook your deployment platform (Vercel, Netlify, etc.) to the same commands.
+```bash
+npm run lint
+npm run test:e2e
+```
+
+Playwright spins up the dev server automatically (port 4173) and stores artifacts under `playwright-report/`.
+Run `npx playwright install` once to download browsers locally.
+
+## CI/CD & Deployment
+
+- `.github/workflows/ci.yml` runs linting, end-to-end tests, and the production build on every push/PR.
+- `.github/workflows/pages.yml` publishes the `dist/` bundle to GitHub Pages whenever `main` updates. Enable Pages in the repo settings (`Deploy from GitHub Actions`) the first time you push. The workflow sets `VITE_BASE_PATH` to `/<repo-name>/`; adjust that value if you map a custom domain.
 
 ## Content Guide
 

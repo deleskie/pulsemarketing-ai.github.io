@@ -25,5 +25,11 @@ jobs:
       - name: Typecheck and lint
         run: npm run lint
 
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Run end-to-end tests
+        run: npm run test:e2e
+
       - name: Build for production
         run: npm run build
