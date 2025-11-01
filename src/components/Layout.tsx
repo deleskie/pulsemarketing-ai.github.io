@@ -35,9 +35,8 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
     <div className="site-shell">
       <header className="site-header">
         <div className="site-header__inner">
-          <Link to="/" className="site-logo" aria-label="Pulse Marketing AI">
+          <Link to="/" className="site-logo" aria-label="Pulse Marketing AI home">
             <img src="/logo.svg" alt="Pulse Marketing AI logo" />
-            <span>Pulse Marketing AI</span>
           </Link>
           <nav className="site-nav">
             {NAV_ITEMS.map((item) => (

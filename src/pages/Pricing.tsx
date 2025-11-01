@@ -45,7 +45,7 @@ export default function PricingPage(): JSX.Element {
             <span className="section__eyebrow">Pricing</span>
             <h1 className="section__title">Programs tailored to your brand’s glow-up.</h1>
             <p className="section__subtitle">
-              Each tier blends software, strategy, and storytelling support. Choose the pace you need—pilot an iconic launch, scale across markets, or co-create entirely new experiences with our lab.
+              Each tier blends software, strategy, and storytelling support and is calibrated to industry-standard ad spend ratios. Ignite aligns to brands turning roughly $30K in monthly revenue into 4–6% marketing investment, while Momentum accelerates teams already spending five figures on paid media.
             </p>
           </div>
           <div className="pricing-hero__badge">

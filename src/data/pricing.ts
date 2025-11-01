@@ -13,12 +13,13 @@ export const pricingTiers: PricingTier[] = [
   {
     id: 'ignite',
     name: 'Ignite',
-    description: 'All the essentials to launch a pulse-driven marketing hub for high-velocity boutiques and hospitality concepts.',
-    priceLabel: '$1,250 / month',
-    bestFor: 'Indie hospitality, wellness, and lifestyle brands ready to centralize campaigns, loyalty, and storytelling.',
+    description: 'All the essentials to launch a pulse-driven marketing hub, calibrated to experiential brands turning ~$30K in monthly revenue into 4–6% marketing investment.',
+    priceLabel: '$850 / month',
+    bestFor: 'Experiential brands generating around $30K in monthly revenue and dedicating 4–6% to marketing.',
     highlights: [
       'Up to 8 branded workspaces with shared intelligence',
       'Pulse Playbooks starter library with concierge onboarding',
+      'Benchmarked to 4–6% of revenue marketing investments (≈$30K monthly revenue)',
       'Storyteller briefings with revenue-minded insights twice weekly',
     ],
     includes: [
@@ -32,12 +33,13 @@ export const pricingTiers: PricingTier[] = [
   {
     id: 'momentum',
     name: 'Momentum',
-    description: 'Scale orchestration, experimentation, and compliance across regions with embedded strategy partners.',
-    priceLabel: '$2,850 / month',
-    bestFor: 'Multi-location collectives coordinating launches, events, and loyalty at neighborhood speed.',
+    description: 'Scale orchestration, experimentation, and compliance for teams already committing five figures each month to advertising.',
+    priceLabel: '$1,999 / month',
+    bestFor: 'Multi-location collectives investing $10K+ in monthly advertising and scaling launches across markets.',
     highlights: [
       'Unlimited workspaces, roles, and permission tiers',
       'Dedicated strategist office hours every sprint',
+      'Optimized for brands investing $10K+ in paid media each month',
       'Experiment velocity lab with quarterly business reviews',
     ],
     includes: [

@@ -3,7 +3,7 @@ import type { BlogPost } from '../data/blogPosts';
 const infinityLoop: BlogPost = {
     slug: 'infinity-loop-community-playbook',
     title: 'The Infinity Loop Playbook: From Guests to Community Catalysts',
-    author: 'Hadiyah Flores',
+    author: 'Pulse Marketing AI Team',
     date: '2026-02-10',
     readingTime: '18 min read',
     excerpt:

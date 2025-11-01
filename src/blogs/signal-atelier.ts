@@ -3,7 +3,7 @@ import type { BlogPost } from '../data/blogPosts';
 const signalAtelier: BlogPost = {
     slug: 'signal-atelier-limited-run',
     title: 'Signal Atelier Handbook: Designing Limited-Run Campaigns That Spark Frenzy',
-    author: 'Andre Dupree',
+    author: 'Pulse Marketing AI Team',
     date: '2026-02-21',
     readingTime: '19 min read',
     excerpt:

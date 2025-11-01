@@ -3,7 +3,7 @@ import type { BlogPost } from '../data/blogPosts';
 const resonanceRooms: BlogPost = {
     slug: 'building-resonance-control-rooms',
     title: 'Resonance Rooms: How Experiential Brands Build AI Launch Control',
-    author: 'Sasha Velasquez',
+    author: 'Pulse Marketing AI Team',
     date: '2026-01-07',
     readingTime: '18 min read',
     excerpt:

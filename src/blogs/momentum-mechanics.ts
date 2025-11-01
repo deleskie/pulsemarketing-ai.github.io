@@ -3,7 +3,7 @@ import type { BlogPost } from '../data/blogPosts';
 const momentumMechanics: BlogPost = {
     slug: 'momentum-mechanics-experiential-scale',
     title: 'Momentum Mechanics: Scaling Experiential Marketing Without Losing Soul',
-    author: 'Priya Natarajan',
+    author: 'Pulse Marketing AI Team',
     date: '2026-01-29',
     readingTime: '20 min read',
     excerpt:

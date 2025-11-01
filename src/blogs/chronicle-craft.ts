@@ -3,7 +3,7 @@ import type { BlogPost } from '../data/blogPosts';
 const chronicleCraft: BlogPost = {
     slug: 'chronicle-craft-live-signals',
     title: 'Chronicle Craft: Storytelling With Live Signals and AI Narrators',
-    author: 'Devon Clarke',
+    author: 'Pulse Marketing AI Team',
     date: '2026-01-18',
     readingTime: '19 min read',
     excerpt:
