@@ -56,11 +56,12 @@
 .showcase-projects__metrics span {
   font-size: 1.8rem;
   font-weight: 700;
-  color: var(--surface);
+  color: rgba(255, 255, 255, 0.96);
+  text-shadow: 0 8px 20px rgba(9, 13, 46, 0.4);
 }
 
 .showcase-projects__metrics p {
-  color: var(--text-secondary);
+  color: rgba(236, 242, 255, 0.78);
 }
 
 .showcase-timeline {
