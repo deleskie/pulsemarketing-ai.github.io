@@ -3,6 +3,9 @@ import { Helmet } from 'react-helmet-async';
 import { pricingTiers } from '../data/pricing';
 import '../styles/pricing.scss';
 
+const CONTACT_EMAIL = 'info@pulsemarketing-ai.com';
+const makeMailto = (subject: string) => `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}`;
+
 const faqs = [
   {
     question: 'How do we determine final pricing?',
@@ -82,9 +85,7 @@ export default function PricingPage(): JSX.Element {
               </div>
               <a
                 className="btn btn--primary pricing-grid__cta"
-                href="https://cal.com/pulsemarketingai/pricing"
-                target="_blank"
-                rel="noreferrer"
+                href={makeMailto(`Pricing inquiry: ${tier.name}`)}
               >
                 {tier.cta}
               </a>

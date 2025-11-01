@@ -5,21 +5,24 @@ import { useBlogPosts } from '../hooks/useBlogPosts';
 import { formatDate } from '../utils/date';
 import '../styles/resources.scss';
 
+const CONTACT_EMAIL = 'info@pulsemarketing-ai.com';
+const makeMailto = (subject: string) => `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}`;
+
 const guides = [
   {
     title: 'Pulse Marketing AI Resonance Field Guide',
     description: 'Map your signals, automations, and storytelling rituals in a single blueprint. Preview available soon.',
-    link: '#',
+    link: makeMailto('Request Pulse Marketing AI Resonance Field Guide preview'),
   },
   {
     title: 'Guardian Governance Playbook',
     description: 'Operationalize compliance without dimming creativity. Includes escalation drills and policy templates.',
-    link: '#',
+    link: makeMailto('Request Guardian Governance Playbook preview'),
   },
   {
     title: 'Storyteller Narrative Manual',
     description: 'Teach AI copilots your brand voice and reporting cadence with annotated prompts and workflows.',
-    link: '#',
+    link: makeMailto('Request Storyteller Narrative Manual preview'),
   },
 ];
 
@@ -28,13 +31,13 @@ const webinars = [
     title: 'Designing Experiential Launch Control Rooms',
     date: 'Nov 12, 2025',
     presenters: 'Pulse Marketing AI producers + hospitality operators. Registration opens soon.',
-    link: '#',
+    link: makeMailto('Register interest: Designing Experiential Launch Control Rooms'),
   },
   {
     title: 'Storyteller Copilots for Multi-Brand Retail',
     date: 'Dec 3, 2025',
     presenters: 'Data, creative, and ops leaders dissect real chronicles. Registration opens soon.',
-    link: '#',
+    link: makeMailto('Register interest: Storyteller Copilots for Multi-Brand Retail'),
   },
 ];
 
@@ -154,9 +157,7 @@ export default function ResourcesPage(): JSX.Element {
           </div>
           <a
             className="btn btn--primary"
-            href="https://jobs.pulsemarketing.ai"
-            target="_blank"
-            rel="noreferrer"
+            href={makeMailto('Careers inquiry')}
           >
             View open roles
           </a>

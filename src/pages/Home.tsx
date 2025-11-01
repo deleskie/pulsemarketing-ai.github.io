@@ -7,6 +7,9 @@ import { features } from '../data/features';
 import { testimonials } from '../data/testimonials';
 import '../styles/home.scss';
 
+const CONTACT_EMAIL = 'info@pulsemarketing-ai.com';
+const MAILTO_IMMERSION = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Schedule an Immersion Session')}`;
+
 const trustLogos = ['Orion Atrium', 'Nova Boutiques', 'Circuit Labs', 'Velvet & Vinyl', 'Porterhouse Group'];
 
 const heroStats = [
@@ -274,10 +277,8 @@ export default function HomePage(): JSX.Element {
           </div>
           <div className="cta-panel__actions">
             <a
-              href="https://cal.com/pulsemarketingai/immersion"
+              href={MAILTO_IMMERSION}
               className="btn btn--primary"
-              target="_blank"
-              rel="noreferrer"
             >
               Schedule Immersion
             </a>

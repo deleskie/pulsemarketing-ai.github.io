@@ -3,6 +3,9 @@ import { Helmet } from 'react-helmet-async';
 import { solutions } from '../data/solutions';
 import '../styles/solutions.scss';
 
+const CONTACT_EMAIL = 'info@pulsemarketing-ai.com';
+const MAILTO_STRATEGY = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Strategy Session Request')}`;
+
 const playbooks = [
   {
     title: 'Signal Sprint',
@@ -134,9 +137,7 @@ export default function SolutionsPage(): JSX.Element {
           </div>
           <a
             className="btn btn--primary"
-            href="https://cal.com/pulsemarketingai/strategy"
-            target="_blank"
-            rel="noreferrer"
+            href={MAILTO_STRATEGY}
           >
             Schedule Strategy Session
           </a>

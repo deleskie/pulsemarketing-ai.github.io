@@ -4,6 +4,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import '../styles/layout.scss';
 import classNames from 'classnames';
 
+const CONTACT_EMAIL = 'info@pulsemarketing-ai.com';
+const MAILTO_IMMERSION = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Schedule an Immersion Session')}`;
+const MAILTO_DOCUMENTATION = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Request Pulse Marketing AI documentation')}`;
+const MAILTO_CONTACT = `mailto:${CONTACT_EMAIL}`;
+
 const NAV_ITEMS = [
   { to: '/platform', label: 'Platform' },
   { to: '/solutions', label: 'Solutions' },
@@ -69,9 +74,7 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
             </Link>
             <a
               className="btn btn--primary"
-              href="https://cal.com/pulsemarketingai/immersion"
-              target="_blank"
-              rel="noreferrer"
+              href={MAILTO_IMMERSION}
             >
               Schedule Immersion
             </a>
@@ -125,9 +128,7 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
               </Link>
               <a
                 className="btn btn--primary"
-                href="https://cal.com/pulsemarketingai/immersion"
-                target="_blank"
-                rel="noreferrer"
+                href={MAILTO_IMMERSION}
               >
                 Schedule Immersion
               </a>
@@ -165,9 +166,7 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
                 <Link to="/pricing">Pricing</Link>
               </li>
               <li>
-                <a href="https://docs.pulsemarketing.ai" target="_blank" rel="noreferrer">
-                  Documentation
-                </a>
+                <a href={MAILTO_DOCUMENTATION}>Documentation</a>
               </li>
             </ul>
           </div>
@@ -181,7 +180,7 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
                 <Link to="/resources#careers">Careers</Link>
               </li>
               <li>
-                <a href="mailto:hello@pulsemarketing.ai">Contact</a>
+                <a href={MAILTO_CONTACT}>Contact</a>
               </li>
               <li>
                 <Link to="/resources#press">Press</Link>
