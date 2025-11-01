@@ -46,34 +46,32 @@
 .showcase-projects__metrics {
   display: grid;
   gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 .showcase-projects__metric {
   border-radius: 18px;
   padding: 1.4rem;
-  background: linear-gradient(
-    135deg,
-    rgba(95, 46, 255, 0.14),
-    rgba(45, 226, 211, 0.12)
-  );
-  border: 1px solid rgba(95, 46, 255, 0.08);
+  background: rgba(245, 247, 255, 0.96);
+  border: 1px solid rgba(95, 46, 255, 0.12);
   display: grid;
   gap: 0.25rem;
+  min-height: 160px;
 }
 
 .showcase-projects__metric span {
   font-size: 1.8rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.96);
-  text-shadow: 0 8px 20px rgba(9, 13, 46, 0.4);
+  color: var(--gradient-start);
+  text-shadow: none;
 }
 
 .showcase-projects__metric p {
-  color: rgba(236, 242, 255, 0.78);
+  color: var(--text-primary);
 }
 
 .showcase-projects__metric small {
-  color: rgba(236, 242, 255, 0.9);
+  color: var(--text-secondary);
   font-size: 0.85rem;
 }
 
@@ -129,7 +127,7 @@
   }
 
   .showcase-projects__metrics {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   }
 
   .showcase-timeline__grid {
