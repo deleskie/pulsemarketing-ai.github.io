@@ -1,38 +1,11 @@
-# Pulse Marketing AI Site
+# Pulse Marketing AI (Static Site)
 
-Marketing microsite that showcases the Pulse Marketing AI platform with launch concepts, pricing programs, and five long-form chronicles.
+This branch hosts the compiled assets that GitHub Pages serves for https://www.pulsemarketing-ai.com/.
 
-## Getting Started
+The editable source lives on the `source` branch (`npm create vite@latest` scaffold). To update the site:
 
-```bash
-npm install
-npm run dev
-```
+1. Switch to the `source` branch and make changes.
+2. Run `npm install` (once) and `npm run build`.
+3. Copy the `dist/` output into the `main` branch root and commit.
 
-The site is built with Vite + React + Sass. Linting uses `tsc --noEmit`.
-
-## Production Build
-
-```bash
-npm run build
-npm run preview   # optional: serve the production bundle locally
-```
-
-## Testing
-
-```bash
-npm run lint
-npm run test:e2e
-```
-
-Playwright spins up the dev server automatically (port 4173) and stores artifacts under `playwright-report/`.
-Run `npx playwright install` once to download browsers locally.
-
-## CI/CD & Deployment
-
-- `.github/workflows/ci.yml` runs linting, end-to-end tests, and the production build on every push/PR.
-- `.github/workflows/pages.yml` publishes the `dist/` bundle to GitHub Pages whenever `main` updates. Enable Pages in the repo settings (`Deploy from GitHub Actions`) the first time you push. The workflow automatically sets `VITE_BASE_PATH` to `/` for username repos (e.g., `deleskie.github.io`) and to `/<repo-name>/` for project repos.
-
-## Content Guide
-
-Voice guardrails live in `VOICE_GUIDE.md`. Long-form chronicles (3k–3.5k words) are defined in `src/data/blogPosts.data.ts` and surfaced through the Resources newsroom.
+Alternatively use the deploy script or automation if you prefer to keep build artifacts in sync automatically.
