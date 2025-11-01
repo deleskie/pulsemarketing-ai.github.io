@@ -21,7 +21,7 @@
   gap: 2rem;
 }
 
-.showcase-projects__grid article {
+.showcase-projects__card {
   border-radius: var(--radius-lg);
   background: rgba(255, 255, 255, 0.97);
   padding: 2.6rem;
@@ -31,16 +31,23 @@
   gap: 1.5rem;
 }
 
-.showcase-projects__grid header span {
+.showcase-projects__card header span {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-size: 0.8rem;
   color: var(--text-muted);
 }
 
-.showcase-projects__grid header h2 {
+.showcase-projects__card header h2 {
   margin-top: 0.5rem;
   font-size: 1.75rem;
+}
+
+.showcase-projects__visual {
+  border-radius: var(--radius-lg);
+  min-height: 160px;
+  background-size: cover;
+  background-position: center;
 }
 
 .showcase-projects__metrics {
@@ -73,6 +80,32 @@
 .showcase-projects__metric small {
   color: var(--text-secondary);
   font-size: 0.85rem;
+}
+
+.showcase-projects__metric-chart {
+  margin-top: 0.5rem;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(95, 46, 255, 0.12);
+  overflow: hidden;
+}
+
+.showcase-projects__metric-chart span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    var(--gradient-start),
+    var(--gradient-end)
+  );
+}
+
+.showcase-projects__story {
+  border-radius: var(--radius-lg);
+  background: rgba(95, 46, 255, 0.08);
+  padding: 1.8rem;
+  display: grid;
+  gap: 1rem;
 }
 
 .showcase-projects__cta {

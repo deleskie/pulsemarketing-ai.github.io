@@ -18,12 +18,12 @@ export const pricingTiers: PricingTier[] = [
       "Build your first pulse-driven marketing hub—launch, learn, and grow with guided strategy and automation.",
     priceLabel: "$850 / month",
     bestFor:
-      "Best for early-stage experiential brands generating around $30K/month in revenue and investing 4–6% in marketing.",
+      "Best for early-stage experiential brands establishing a repeatable launch rhythm across a handful of locations.",
     highlights: [
       "Up to 8 branded workspaces with shared intelligence",
       "Pulse Playbooks starter library + concierge onboarding",
       "Twice-weekly Storyteller briefings with performance insights",
-      "Benchmark-aligned investment guidance for emerging teams",
+      "Success Plan roadmap tailored to your channels and staffing",
     ],
     includes: [
       "Signal Synthesis Grid (core channel connectors)",
@@ -41,12 +41,12 @@ export const pricingTiers: PricingTier[] = [
       "Optimize every channel, unify data, and drive faster cycles of creative testing and learning.",
     priceLabel: "$1,999 / month",
     bestFor:
-      "Best for growth-stage teams spending $10K+ per month on ads and scaling launches across markets.",
+      "Best for growth-stage teams coordinating multi-market launches and shared campaign budgets.",
     highlights: [
       "Unlimited workspaces, roles, and permission tiers",
       "Dedicated strategist office hours each sprint",
       "Quarterly Experiment Velocity Lab business reviews",
-      "Benchmark alignment for five-figure media investments",
+      "Success Plan calibrates orchestration to your market footprint",
     ],
     includes: [
       "Everything in Ignite",

@@ -169,6 +169,19 @@
   gap: 1rem;
 }
 
+.resources-webinars__status {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(95, 46, 255, 0.12);
+  color: var(--gradient-start);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
 .resources-webinars__date {
   font-weight: 600;
   color: var(--gradient-start);

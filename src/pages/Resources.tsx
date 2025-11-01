@@ -13,7 +13,7 @@ const guides = [
   {
     title: "Pulse Marketing AI Resonance Field Guide",
     description:
-      "Map your signals, automations, and storytelling rituals in a single blueprint. Preview available soon.",
+      "Map your signals, automations, and storytelling rituals in a single blueprint. Request a preview and we will send a 2-minute intake form for early access.",
     link: makeMailto(
       "Request Pulse Marketing AI Resonance Field Guide preview",
     ),
@@ -21,13 +21,13 @@ const guides = [
   {
     title: "Guardian Governance Playbook",
     description:
-      "Operationalize compliance without dimming creativity. Includes escalation drills and policy templates.",
+      "Operationalize compliance without dimming creativity. Includes escalation drills and policy templates. Ask for the preview to receive a short qualification form.",
     link: makeMailto("Request Guardian Governance Playbook preview"),
   },
   {
     title: "Storyteller Narrative Manual",
     description:
-      "Teach AI copilots your brand voice and reporting cadence with annotated prompts and workflows.",
+      "Teach AI copilots your brand voice and reporting cadence with annotated prompts and workflows. Submit a preview request and we will reply with onboarding steps.",
     link: makeMailto("Request Storyteller Narrative Manual preview"),
   },
 ];
@@ -38,6 +38,7 @@ const webinars = [
     date: "Nov 12, 2025",
     presenters:
       "Pulse Marketing AI producers + hospitality operators. Registration opens soon.",
+    status: "Upcoming",
     link: makeMailto(
       "Register interest: Designing Experiential Launch Control Rooms",
     ),
@@ -47,6 +48,7 @@ const webinars = [
     date: "Dec 3, 2025",
     presenters:
       "Data, creative, and ops leaders dissect real chronicles. Registration opens soon.",
+    status: "Upcoming",
     link: makeMailto(
       "Register interest: Storyteller Copilots for Multi-Brand Retail",
     ),
@@ -247,7 +249,7 @@ export default function ResourcesPage(): JSX.Element {
               <h3>{guide.title}</h3>
               <p>{guide.description}</p>
               <a href={guide.link} className="btn btn--ghost">
-                Get the guide preview
+                Request preview form
               </a>
             </article>
           ))}
@@ -274,10 +276,15 @@ export default function ResourcesPage(): JSX.Element {
           {webinars.map((webinar) => (
             <article key={webinar.title}>
               <h3>{webinar.title}</h3>
+              {webinar.status ? (
+                <span className="resources-webinars__status">
+                  {webinar.status}
+                </span>
+              ) : null}
               <p className="resources-webinars__date">{webinar.date}</p>
               <p>{webinar.presenters}</p>
               <a href={webinar.link} className="btn btn--ghost">
-                Reserve my invite
+                Join the waitlist
               </a>
             </article>
           ))}

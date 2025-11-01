@@ -3,11 +3,15 @@ import { Helmet } from "react-helmet-async";
 import { pricingTiers } from "../data/pricing";
 import { planCoverage } from "../data/plans";
 import { features } from "../data/features";
+import Term from "../components/Term";
 import "../styles/pricing.scss";
 
 const CONTACT_EMAIL = "info@pulsemarketing-ai.com";
 const makeMailto = (subject: string) =>
   `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}`;
+
+const SUCCESS_PLAN_DEFINITION =
+  "A collaborative working session where we map your channels, regions, and staffing to the Pulse modules you need, then confirm pricing before activation.";
 
 const faqs = [
   {
@@ -72,9 +76,14 @@ export default function PricingPage(): JSX.Element {
               at the pace your brand is ready for.
             </p>
             <p className="pricing-hero__note">
-              Final pricing happens during a 45-minute Success Plan session
-              where we tailor scope, regions, and add-ons to your roadmap—no
-              surprise fees.
+              A 45-minute{" "}
+              <Term
+                label="Success Plan session"
+                definition={SUCCESS_PLAN_DEFINITION}
+              />{" "}
+              maps your footprint—locations, channels, staffing—and calibrates
+              subscription pricing before anything launches. You see the
+              numbers and rollout plan on the call.
             </p>
             <div className="pricing-hero__cta">
               <a

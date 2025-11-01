@@ -34,6 +34,13 @@ const playbooks = [
   },
 ];
 
+const solutionIcons: Record<string, string> = {
+  "experiential-hospitality": "🏨",
+  "multi-brand-retail": "🛍️",
+  "franchise-operators": "🗺️",
+  "creative-collectives": "🎨",
+};
+
 export default function SolutionsPage(): JSX.Element {
   return (
     <>
@@ -100,32 +107,53 @@ export default function SolutionsPage(): JSX.Element {
         </div>
         <div className="solutions-grid__tiles">
           {solutions.map((solution) => (
-            <article key={solution.id} id={solution.id}>
-              <h3>For {solution.industry}</h3>
-              <p>{solution.headline}</p>
-              <div className="solutions-grid__metrics">
+            <article
+              key={solution.id}
+              id={solution.id}
+              className="solutions-card"
+            >
+              <header className="solutions-card__header">
+                <span className="solutions-card__icon" aria-hidden="true">
+                  {solutionIcons[solution.id] ?? "✨"}
+                </span>
+                <div>
+                  <span className="solutions-card__eyebrow">
+                    {solution.industry}
+                  </span>
+                  <h3>{solution.headline}</h3>
+                </div>
+              </header>
+              <p>
+                {solution.metrics.length > 0
+                  ? solution.metrics[0]
+                  : solution.headline}
+              </p>
+              <div className="solutions-card__metrics">
                 {solution.metrics.map((metric) => (
                   <span key={metric}>{metric}</span>
                 ))}
               </div>
-              <div className="solutions-grid__columns">
-                <div>
-                  <h4>Challenges we solve</h4>
-                  <ul>
-                    {solution.pains.map((pain) => (
-                      <li key={pain}>{pain}</li>
-                    ))}
-                  </ul>
+              <details className="solutions-card__details">
+                <summary>What we tackle</summary>
+                <div className="solutions-card__lists">
+                  <div>
+                    <h4>Challenges</h4>
+                    <ul>
+                      {solution.pains.map((pain) => (
+                        <li key={pain}>{pain}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <h4>Outcomes</h4>
+                    <ul>
+                      {solution.outcomes.map((outcome) => (
+                        <li key={outcome}>{outcome}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-                <div>
-                  <h4>Outcomes we deliver</h4>
-                  <ul>
-                    {solution.outcomes.map((outcome) => (
-                      <li key={outcome}>{outcome}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+              </details>
               <blockquote className="solutions-grid__testimonial">
                 <p>“{solution.testimonial.quote}”</p>
                 <cite>{solution.testimonial.attribution}</cite>

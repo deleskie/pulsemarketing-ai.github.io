@@ -43,6 +43,18 @@ const timeline = [
   },
 ];
 
+const parseMetricFill = (value: string): number => {
+  const match = value.match(/-?\d+(\.\d+)?/);
+  if (!match) {
+    return 45;
+  }
+  const numeric = Math.abs(parseFloat(match[0]));
+  if (Number.isNaN(numeric)) {
+    return 45;
+  }
+  return Math.min(100, Math.max(20, numeric));
+};
+
 export default function ShowcasePage(): JSX.Element {
   return (
     <>
@@ -70,31 +82,52 @@ export default function ShowcasePage(): JSX.Element {
       <section className="section showcase-projects">
         <div className="showcase-projects__grid">
           {showcaseProjects.map((project) => (
-            <article key={project.id}>
+            <article key={project.id} className="showcase-projects__card">
               <header>
                 <span>{project.customer}</span>
                 <h2>{project.headline}</h2>
               </header>
               <p>{project.summary}</p>
-              <div className="showcase-projects__metrics">
-                {project.metrics.map((metric) => (
-                  <div key={metric.label} className="showcase-projects__metric">
-                    <span>{metric.value}</span>
-                    <p>{metric.label}</p>
-                    <small>{metric.context}</small>
-                  </div>
-                ))}
+              <div
+                className="showcase-projects__visual"
+                style={{ backgroundImage: project.visual.gradient }}
+              >
+                <span className="sr-only">{project.visual.alt}</span>
               </div>
-              <div className="showcase-projects__cta">
-                {project.cta.link.startsWith("mailto:") ? (
-                  <a href={project.cta.link} className="btn btn--ghost">
-                    {project.cta.label}
-                  </a>
-                ) : (
-                  <Link to={project.cta.link} className="btn btn--ghost">
-                    {project.cta.label}
-                  </Link>
-                )}
+              <div className="showcase-projects__metrics">
+                {project.metrics.map((metric) => {
+                  const fill = parseMetricFill(metric.value);
+                  return (
+                    <div
+                      key={metric.label}
+                      className="showcase-projects__metric"
+                    >
+                      <span>{metric.value}</span>
+                      <p>{metric.label}</p>
+                      <small>{metric.context}</small>
+                      <div
+                        className="showcase-projects__metric-chart"
+                        aria-hidden="true"
+                      >
+                        <span style={{ width: `${fill}%` }} />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="showcase-projects__story">
+                <p>{project.story}</p>
+                <div className="showcase-projects__cta">
+                  {project.cta.link.startsWith("mailto:") ? (
+                    <a href={project.cta.link} className="btn btn--ghost">
+                      {project.cta.label}
+                    </a>
+                  ) : (
+                    <Link to={project.cta.link} className="btn btn--ghost">
+                      {project.cta.label}
+                    </Link>
+                  )}
+                </div>
               </div>
             </article>
           ))}

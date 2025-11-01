@@ -1,6 +1,8 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import Term from "../components/Term";
 import { features } from "../data/features";
 import { planCoverage } from "../data/plans";
 import "../styles/platform.scss";
@@ -67,6 +69,83 @@ const enablement = [
 
 const moduleLookup = new Map(features.map((feature) => [feature.id, feature]));
 
+const moduleMeta: Record<
+  string,
+  {
+    icon: string;
+    ctaLabel: string;
+    ctaHref: string;
+  }
+> = {
+  "signal-synthesis-grid": {
+    icon: "📡",
+    ctaLabel: "Download the signal checklist",
+    ctaHref: "/resources#guides",
+  },
+  "pulse-playbooks": {
+    icon: "🗂️",
+    ctaLabel: "See launch playbooks",
+    ctaHref: "/solutions#signature-plays",
+  },
+  "audience-amplifier": {
+    icon: "🎯",
+    ctaLabel: "Request audience modeling demo",
+    ctaHref:
+      "mailto:info@pulsemarketing-ai.com?subject=Audience Amplifier demo",
+  },
+  "journey-composer": {
+    icon: "🧭",
+    ctaLabel: "Compare lifecycle journeys",
+    ctaHref: "/pricing#plans",
+  },
+  "experience-lab": {
+    icon: "🎬",
+    ctaLabel: "Watch an Experience Lab walkthrough",
+    ctaHref:
+      "mailto:info@pulsemarketing-ai.com?subject=Experience Lab walkthrough",
+  },
+  "integration-atlas": {
+    icon: "🔗",
+    ctaLabel: "View integration catalog",
+    ctaHref: "/resources#guides",
+  },
+  "guardian-governance": {
+    icon: "🛡️",
+    ctaLabel: "Talk governance with our team",
+    ctaHref:
+      "mailto:info@pulsemarketing-ai.com?subject=Guardian Governance consult",
+  },
+  default: {
+    icon: "✨",
+    ctaLabel: "Talk to a strategist",
+    ctaHref:
+      "mailto:info@pulsemarketing-ai.com?subject=Schedule a strategist call",
+  },
+};
+
+const termDefinitions: Record<string, string> = {
+  "Resonance Graph":
+    "Pulse Marketing AI’s unified data layer that blends bookings, POS, sentiment, and creative performance in real time.",
+  "Pulse Automation Fabric":
+    "Composable automation layer that orchestrates launches, guardrails, and pacing across every channel.",
+  "Immersive Story Stack":
+    "Storytelling toolkit that turns live signals into executive briefs, creative prompts, and frontline talk tracks.",
+  "Signal Synthesis Grid":
+    "A live dashboard that fuses first-party, experiential, and campaign data into a shared pulse.",
+  "Pulse Playbooks":
+    "Pre-built launch sequences with automation and compliance guardrails baked in.",
+  "Audience Amplifier Autopilot":
+    "Audience intelligence engine that identifies lookalikes, calibrates offers, and retargets automatically.",
+  "Journey Composer":
+    "Lifecycle builder that personalizes onboarding, loyalty, and recovery journeys using live signals.",
+  "Experience Lab":
+    "Launch rehearsal space for prototyping on-site activations with staffing, signage, and sentiment loops.",
+  "Integration Atlas":
+    "A curated connector library with credential vaults, sandbox twins, and governance-ready hooks.",
+  "Guardian Governance":
+    "Policy and approvals engine ensuring every activation stays compliant without slowing creativity.",
+};
+
 export default function PlatformPage(): JSX.Element {
   return (
     <>
@@ -131,7 +210,16 @@ export default function PlatformPage(): JSX.Element {
         <div className="platform-architecture__grid">
           {architecture.map((item) => (
             <article key={item.title}>
-              <h3>{item.title}</h3>
+              <h3>
+                {termDefinitions[item.title] ? (
+                  <Term
+                    label={item.title}
+                    definition={termDefinitions[item.title]}
+                  />
+                ) : (
+                  item.title
+                )}
+              </h3>
               <p>{item.description}</p>
               <ul>
                 {item.bullets.map((bullet) => (
@@ -156,21 +244,64 @@ export default function PlatformPage(): JSX.Element {
           </p>
         </div>
         <div className="platform-modules__grid">
-          {features.map((feature) => (
-            <article key={feature.id}>
-              <span className="platform-modules__category">
-                {feature.category}
-              </span>
-              <h3>{feature.title}</h3>
-              <p>{feature.description}</p>
-              <p className="platform-modules__usecase">{feature.useCase}</p>
-              <ul>
-                {feature.outcomes.map((outcome) => (
-                  <li key={outcome}>{outcome}</li>
-                ))}
-              </ul>
-            </article>
-          ))}
+          {features.map((feature) => {
+            const meta = moduleMeta[feature.id] ?? moduleMeta.default;
+            const isExternal =
+              meta.ctaHref.startsWith("http") ||
+              meta.ctaHref.startsWith("mailto:");
+            return (
+              <article key={feature.id} className="platform-module-card">
+                <header className="platform-module-card__header">
+                  <span
+                    className="platform-module-card__icon"
+                    aria-hidden="true"
+                  >
+                    {meta.icon}
+                  </span>
+                  <div>
+                    <span className="platform-modules__category">
+                      {feature.category}
+                    </span>
+                    <h3>
+                      {termDefinitions[feature.title] ? (
+                        <Term
+                          label={feature.title}
+                          definition={termDefinitions[feature.title]}
+                        />
+                      ) : (
+                        feature.title
+                      )}
+                    </h3>
+                  </div>
+                </header>
+                <p>{feature.description}</p>
+                <details className="platform-module-card__details">
+                  <summary>How teams use it</summary>
+                  <p>{feature.useCase}</p>
+                  <ul>
+                    {feature.outcomes.map((outcome) => (
+                      <li key={outcome}>{outcome}</li>
+                    ))}
+                  </ul>
+                </details>
+                {isExternal ? (
+                  <a
+                    className="platform-module-card__cta btn btn--ghost"
+                    href={meta.ctaHref}
+                  >
+                    {meta.ctaLabel}
+                  </a>
+                ) : (
+                  <Link
+                    className="platform-module-card__cta btn btn--ghost"
+                    to={meta.ctaHref}
+                  >
+                    {meta.ctaLabel}
+                  </Link>
+                )}
+              </article>
+            );
+          })}
         </div>
       </section>
 

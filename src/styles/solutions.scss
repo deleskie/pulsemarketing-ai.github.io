@@ -64,7 +64,7 @@
   gap: 2rem;
 }
 
-.solutions-grid__tiles article {
+.solutions-card {
   border-radius: var(--radius-lg);
   background: rgba(255, 255, 255, 0.96);
   box-shadow: var(--shadow-soft);
@@ -74,17 +74,34 @@
   border: 1px solid rgba(95, 46, 255, 0.08);
 }
 
+.solutions-card__header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.solutions-card__icon {
+  font-size: 2rem;
+}
+
+.solutions-card__eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
 .solutions-grid__tiles h3 {
   font-size: 1.6rem;
 }
 
-.solutions-grid__metrics {
+.solutions-card__metrics {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
 }
 
-.solutions-grid__metrics span {
+.solutions-card__metrics span {
   display: inline-flex;
   align-items: center;
   padding: 0.45rem 0.8rem;
@@ -95,19 +112,45 @@
   font-size: 0.9rem;
 }
 
-.solutions-grid__columns {
-  display: grid;
-  gap: 1.5rem;
+.solutions-card__details summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--surface);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
-.solutions-grid__columns h4 {
+.solutions-card__details summary::marker {
+  content: "";
+}
+
+.solutions-card__details summary::before {
+  content: "▸";
+  font-size: 0.8rem;
+  color: var(--gradient-start);
+  transform: rotate(0deg);
+  transition: transform 0.2s ease;
+}
+
+.solutions-card__details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.solutions-card__lists {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.solutions-card__lists h4 {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-size: 0.85rem;
   color: var(--text-muted);
 }
 
-.solutions-grid__columns ul {
+.solutions-card__lists ul {
   margin: 0;
   padding-left: 1rem;
   display: grid;
@@ -205,7 +248,7 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .solutions-grid__columns {
+  .solutions-card__lists {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 2.5rem;
   }

@@ -81,8 +81,8 @@ export default function HomePage(): JSX.Element {
               <Link to="/solutions" className="btn btn--accent">
                 Explore Programs
               </Link>
-              <Link to="/pricing" className="btn btn--ghost">
-                View Pricing
+              <Link to="/resources#webinars" className="btn btn--ghost">
+                Watch a Demo
               </Link>
             </div>
             <ul className="hero__stats">
