@@ -31,7 +31,7 @@ Run `npx playwright install` once to download browsers locally.
 ## CI/CD & Deployment
 
 - `.github/workflows/ci.yml` runs linting, end-to-end tests, and the production build on every push/PR.
-- `.github/workflows/pages.yml` publishes the `dist/` bundle to GitHub Pages whenever `main` updates. Enable Pages in the repo settings (`Deploy from GitHub Actions`) the first time you push. The workflow sets `VITE_BASE_PATH` to `/<repo-name>/`; adjust that value if you map a custom domain.
+- `.github/workflows/pages.yml` publishes the `dist/` bundle to GitHub Pages whenever `main` updates. Enable Pages in the repo settings (`Deploy from GitHub Actions`) the first time you push. The workflow automatically sets `VITE_BASE_PATH` to `/` for username repos (e.g., `deleskie.github.io`) and to `/<repo-name>/` for project repos.
 
 ## Content Guide
 
