@@ -64,12 +64,13 @@
   display: grid;
   gap: 0.25rem;
   min-height: 160px;
+  word-break: break-word;
 }
 
 .showcase-projects__metric span {
   font-size: 1.8rem;
   font-weight: 700;
-  color: var(--gradient-start);
+  color: var(--surface);
   text-shadow: none;
 }
 
@@ -102,10 +103,12 @@
 
 .showcase-projects__story {
   border-radius: var(--radius-lg);
-  background: rgba(95, 46, 255, 0.08);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(95, 46, 255, 0.12);
   padding: 1.8rem;
   display: grid;
   gap: 1rem;
+  word-break: break-word;
 }
 
 .showcase-projects__cta {

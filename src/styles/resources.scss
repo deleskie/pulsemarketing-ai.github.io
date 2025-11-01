@@ -1,10 +1,23 @@
 .resources-hero {
+  position: relative;
   background: linear-gradient(
     140deg,
-    rgba(5, 7, 28, 0.95),
-    rgba(20, 36, 80, 0.9)
+    rgba(5, 7, 28, 0.88),
+    rgba(20, 36, 80, 0.84)
   );
   color: #fff;
+}
+
+.resources-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(2, 3, 12, 0.75) 0%,
+    rgba(2, 3, 12, 0.55) 45%,
+    rgba(5, 7, 28, 0.1) 100%
+  );
 }
 
 .resources-hero .section__title {
@@ -13,6 +26,8 @@
 .resources-hero__inner {
   max-width: 900px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .resources-hero__tabs {
