@@ -7,7 +7,11 @@ export function parseDate(dateStr: string): Date {
 
 export function formatDate(
   dateStr: string,
-  options: Intl.DateTimeFormatOptions = { month: 'short', day: 'numeric', year: 'numeric' },
+  options: Intl.DateTimeFormatOptions = {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  },
   locale?: string,
 ): string {
   const parsed = parseDate(dateStr);
@@ -17,7 +21,7 @@ export function formatDate(
 export function formatLongDate(dateStr: string, locale?: string): string {
   return formatDate(
     dateStr,
-    { month: 'long', day: 'numeric', year: 'numeric' },
+    { month: "long", day: "numeric", year: "numeric" },
     locale,
   );
 }

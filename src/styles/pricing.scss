@@ -1,5 +1,9 @@
 .pricing-hero {
-  background: linear-gradient(135deg, rgba(95, 46, 255, 0.14), rgba(45, 226, 211, 0.12));
+  background: linear-gradient(
+    135deg,
+    rgba(95, 46, 255, 0.14),
+    rgba(45, 226, 211, 0.12)
+  );
 }
 
 .pricing-hero__inner {
@@ -73,6 +77,108 @@
   justify-self: start;
 }
 
+.pricing-coverage__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  gap: 2rem;
+}
+
+.pricing-coverage__table-wrapper {
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(95, 46, 255, 0.08);
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: var(--shadow-soft);
+}
+
+.pricing-coverage__table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px;
+}
+
+.pricing-coverage__table th,
+.pricing-coverage__table td {
+  padding: 1.2rem 1.4rem;
+  border-bottom: 1px solid rgba(95, 46, 255, 0.08);
+  text-align: left;
+}
+
+.pricing-coverage__table thead th {
+  background: rgba(95, 46, 255, 0.06);
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.pricing-coverage__table tbody tr:last-child th,
+.pricing-coverage__table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.pricing-coverage__module-title {
+  font-weight: 600;
+  color: var(--surface);
+  display: block;
+}
+
+.pricing-coverage__module-note {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.pricing-coverage__check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 999px;
+  background: rgba(95, 46, 255, 0.14);
+  color: var(--surface);
+  font-weight: 700;
+}
+
+.pricing-coverage__dash {
+  color: var(--text-muted);
+}
+
+.pricing-success-plan__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  gap: 2.5rem;
+}
+
+.pricing-success-plan__steps {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.pricing-success-plan__steps article {
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(95, 46, 255, 0.08);
+  box-shadow: var(--shadow-soft);
+  padding: 2rem;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.pricing-success-plan__steps h3 {
+  font-size: 1.15rem;
+  color: var(--surface);
+}
+
+.pricing-success-plan__steps p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
 .pricing-faq__grid {
   display: grid;
   gap: 2rem;
@@ -95,6 +201,14 @@
 
   .pricing-grid__sections {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pricing-coverage__table {
+    min-width: unset;
+  }
+
+  .pricing-success-plan__steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .pricing-faq__grid {

@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
-import type { BlogPost } from '../data/blogPosts';
-import { loadBlogPost } from '../data/blogPosts';
-import '../styles/blog-post.scss';
-import { formatLongDate } from '../utils/date';
+import React, { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import type { BlogPost } from "../data/blogPosts";
+import { loadBlogPost } from "../data/blogPosts";
+import "../styles/blog-post.scss";
+import { formatLongDate } from "../utils/date";
 
 export default function BlogPostPage(): JSX.Element {
   const { slug } = useParams();
@@ -29,7 +29,9 @@ export default function BlogPostPage(): JSX.Element {
       })
       .catch((err) => {
         if (active) {
-          setError(err instanceof Error ? err : new Error('Failed to load article'));
+          setError(
+            err instanceof Error ? err : new Error("Failed to load article"),
+          );
           setLoading(false);
         }
       });
@@ -54,7 +56,9 @@ export default function BlogPostPage(): JSX.Element {
       <section className="section blog-post">
         <div className="blog-post__container">
           <h1>Article unavailable</h1>
-          <p>We couldn&apos;t load this story right now. Please try again soon.</p>
+          <p>
+            We couldn&apos;t load this story right now. Please try again soon.
+          </p>
         </div>
       </section>
     );
@@ -66,8 +70,8 @@ export default function BlogPostPage(): JSX.Element {
         <div className="blog-post__container">
           <h1>Article not found</h1>
           <p>
-            The story you&apos;re looking for has moved. See our <Link to="/resources#blog">latest
-            articles</Link>.
+            The story you&apos;re looking for has moved. See our{" "}
+            <Link to="/resources#articles">latest articles</Link>.
           </p>
         </div>
       </section>
@@ -83,9 +87,7 @@ export default function BlogPostPage(): JSX.Element {
       <article className="section blog-post">
         <div className="blog-post__container">
           <header className="blog-post__header">
-            <span className="blog-post__date">
-              {formatLongDate(post.date)}
-            </span>
+            <span className="blog-post__date">{formatLongDate(post.date)}</span>
             <h1>{post.title}</h1>
             <div className="blog-post__meta">
               <span>By {post.author}</span>
@@ -98,13 +100,19 @@ export default function BlogPostPage(): JSX.Element {
             ))}
           </div>
           <aside className="blog-post__disclaimer">
-            <p>Stories are inspired by typical customer situations; names and details are fictional.</p>
+            <p>
+              Stories are inspired by typical customer situations; names and
+              details are fictional.
+            </p>
             {post.includeCompetitorDisclaimer ? (
-              <p>Comparisons and company references are hypothetical and provided for illustrative purposes only.</p>
+              <p>
+                Comparisons and company references are hypothetical and provided
+                for illustrative purposes only.
+              </p>
             ) : null}
           </aside>
           <footer className="blog-post__footer">
-            <Link to="/resources#blog" className="btn btn--ghost">
+            <Link to="/resources#articles" className="btn btn--ghost">
               Back to newsroom
             </Link>
           </footer>

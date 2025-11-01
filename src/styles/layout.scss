@@ -53,7 +53,10 @@
   padding: 0.55rem 1.75rem 0.55rem 0.9rem;
   font-weight: 600;
   color: var(--text-secondary);
-  background: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.59.589844L6 5.16984L1.41.589844L0 1.99984L6 7.99984L12 1.99984L10.59.589844Z' fill='%230f172a'/%3E%3C/svg%3E") no-repeat right 0.75rem center/12px, #fff;
+  background:
+    url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.59.589844L6 5.16984L1.41.589844L0 1.99984L6 7.99984L12 1.99984L10.59.589844Z' fill='%230f172a'/%3E%3C/svg%3E")
+      no-repeat right 0.75rem center/12px,
+    #fff;
 }
 
 .site-nav__item {
@@ -61,7 +64,9 @@
   border-radius: 999px;
   font-weight: 600;
   color: var(--text-secondary);
-  transition: background 0.2s ease, color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .site-nav__item:hover {
@@ -79,7 +84,6 @@
   align-items: center;
   gap: 0.75rem;
 }
-
 
 .site-header__cta .btn,
 .site-nav-mobile .btn {
@@ -107,7 +111,9 @@
   width: 24px;
   background: var(--surface);
   border-radius: 999px;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .site-header__toggle.is-open span:first-child {

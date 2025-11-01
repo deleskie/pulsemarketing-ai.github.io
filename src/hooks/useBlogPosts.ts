@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import type { BlogPost } from '../data/blogPosts';
-import { loadBlogPosts } from '../data/blogPosts';
+import { useEffect, useState } from "react";
+import type { BlogPost } from "../data/blogPosts";
+import { loadBlogPosts } from "../data/blogPosts";
 
 interface UseBlogPostsResult {
   posts: BlogPost[] | null;
@@ -22,7 +22,9 @@ export function useBlogPosts(): UseBlogPostsResult {
       })
       .catch((err) => {
         if (active) {
-          setError(err instanceof Error ? err : new Error('Failed to load posts'));
+          setError(
+            err instanceof Error ? err : new Error("Failed to load posts"),
+          );
         }
       });
 

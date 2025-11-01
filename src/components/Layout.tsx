@@ -1,26 +1,29 @@
-import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import '../styles/layout.scss';
-import classNames from 'classnames';
+import React, { useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import "../styles/layout.scss";
+import classNames from "classnames";
 
-const CONTACT_EMAIL = 'info@pulsemarketing-ai.com';
-const MAILTO_IMMERSION = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Schedule an Immersion Session')}`;
-const MAILTO_DOCUMENTATION = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Request Pulse Marketing AI documentation')}`;
+const CONTACT_EMAIL = "info@pulsemarketing-ai.com";
+const MAILTO_IMMERSION = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Schedule an Immersion Session")}`;
+const MAILTO_DOCUMENTATION = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Request Pulse Marketing AI documentation")}`;
 const MAILTO_CONTACT = `mailto:${CONTACT_EMAIL}`;
+const MAILTO_STRATEGY = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Strategy Session Request")}`;
+const MAILTO_SHOWCASE = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Request a case study debrief")}`;
+const MAILTO_RESOURCES_GUIDE = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Request Resonance Field Guide preview")}`;
 
 const NAV_ITEMS = [
-  { to: '/platform', label: 'Platform' },
-  { to: '/solutions', label: 'Solutions' },
-  { to: '/pricing', label: 'Pricing' },
-  { to: '/resources', label: 'Resources' },
-  { to: '/showcase', label: 'Showcase' },
+  { to: "/platform", label: "Platform" },
+  { to: "/solutions", label: "Solutions" },
+  { to: "/pricing", label: "Pricing" },
+  { to: "/resources", label: "Resources" },
+  { to: "/showcase", label: "Showcase" },
 ];
 
 const LANG_OPTIONS = [
-  { code: 'en', label: 'English' },
-  { code: 'es-419', label: 'Espanol (LatAm)' },
-  { code: 'fr', label: 'Francais' },
+  { code: "en", label: "English" },
+  { code: "es-419", label: "Espanol (LatAm)" },
+  { code: "fr", label: "Francais" },
 ];
 
 interface LayoutProps {
@@ -30,12 +33,66 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps): JSX.Element {
   const [menuOpen, setMenuOpen] = useState(false);
   const [language, setLanguage] = useState<string>(LANG_OPTIONS[0].code);
+  const location = useLocation();
+  const path = location.pathname;
+
+  const contextualCta = [
+    {
+      match: (route: string) => route.startsWith("/platform"),
+      label: "View Plan Coverage",
+      type: "link" as const,
+      value: "/platform#plan-coverage",
+    },
+    {
+      match: (route: string) => route.startsWith("/solutions"),
+      label: "Schedule Strategy Session",
+      type: "external" as const,
+      value: MAILTO_STRATEGY,
+    },
+    {
+      match: (route: string) => route.startsWith("/resources"),
+      label: "Request Resonance Guide",
+      type: "external" as const,
+      value: MAILTO_RESOURCES_GUIDE,
+    },
+    {
+      match: (route: string) => route.startsWith("/showcase"),
+      label: "Discuss These Results",
+      type: "external" as const,
+      value: MAILTO_SHOWCASE,
+    },
+    {
+      match: (route: string) => route.startsWith("/pricing"),
+      label: "Learn About Success Plans",
+      type: "link" as const,
+      value: "/pricing#success-plan",
+    },
+  ].find((option) => option.match(path)) ?? {
+    label: "Schedule Immersion",
+    type: "external" as const,
+    value: MAILTO_IMMERSION,
+  };
+
+  const renderFloatingCta = (className: string) =>
+    contextualCta.type === "link" ? (
+      <Link to={contextualCta.value} className={className}>
+        {contextualCta.label}
+      </Link>
+    ) : (
+      <a href={contextualCta.value} className={className}>
+        {contextualCta.label}
+      </a>
+    );
 
   return (
     <div className="site-shell">
       <header className="site-header">
         <div className="site-header__inner">
-          <Link to="/" className="site-logo" aria-label="Pulse Marketing AI home">
+          <Link
+            to="/"
+            className="site-logo"
+            aria-label="Pulse Marketing AI home"
+          >
             <img src="/logo.svg" alt="Pulse Marketing AI logo" />
           </Link>
           <nav className="site-nav">
@@ -44,7 +101,9 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
                 key={item.to}
                 to={item.to}
                 className={({ isActive }) =>
-                  classNames('site-nav__item', { 'site-nav__item--active': isActive })
+                  classNames("site-nav__item", {
+                    "site-nav__item--active": isActive,
+                  })
                 }
               >
                 {item.label}
@@ -71,15 +130,14 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
             <Link to="/pricing" className="btn btn--ghost">
               View Pricing
             </Link>
-            <a
-              className="btn btn--primary"
-              href={MAILTO_IMMERSION}
-            >
+            <a className="btn btn--primary" href={MAILTO_IMMERSION}>
               Schedule Immersion
             </a>
           </div>
           <button
-            className={classNames('site-header__toggle', { 'is-open': menuOpen })}
+            className={classNames("site-header__toggle", {
+              "is-open": menuOpen,
+            })}
             onClick={() => setMenuOpen((prev) => !prev)}
             aria-expanded={menuOpen}
             aria-label="Toggle menu"
@@ -122,13 +180,14 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
                   {item.label}
                 </NavLink>
               ))}
-              <Link to="/pricing" className="btn btn--ghost" onClick={() => setMenuOpen(false)}>
+              <Link
+                to="/pricing"
+                className="btn btn--ghost"
+                onClick={() => setMenuOpen(false)}
+              >
                 View Pricing
               </Link>
-              <a
-                className="btn btn--primary"
-                href={MAILTO_IMMERSION}
-              >
+              <a className="btn btn--primary" href={MAILTO_IMMERSION}>
                 Schedule Immersion
               </a>
             </motion.nav>
@@ -144,7 +203,8 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
               <span>Pulse Marketing AI</span>
             </Link>
             <p className="site-footer__tagline">
-              Pulse Marketing AI unifies signal intelligence, automations, and storytelling into one experiential command studio.
+              Pulse Marketing AI unifies signal intelligence, automations, and
+              storytelling into one experiential command studio.
             </p>
             <div className="site-footer__legal">
               <span>&copy; {new Date().getFullYear()} Pulse Marketing AI</span>
@@ -190,7 +250,7 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
             <h4>Resources</h4>
             <ul>
               <li>
-                <Link to="/resources#blog">Blog</Link>
+                <Link to="/resources#articles">Blog</Link>
               </li>
               <li>
                 <Link to="/resources#webinars">Webinars</Link>
@@ -205,13 +265,9 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
           </div>
         </div>
       </footer>
-      <Link to="/pricing" className="site-cta-floating btn btn--accent">
-        Talk to a strategist
-      </Link>
+      {renderFloatingCta("site-cta-floating btn btn--accent")}
       <div className="site-cta-mobile">
-        <Link to="/pricing" className="btn btn--accent">
-          Talk to a strategist
-        </Link>
+        {renderFloatingCta("btn btn--accent")}
       </div>
     </div>
   );

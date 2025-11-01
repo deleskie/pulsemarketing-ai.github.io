@@ -16,12 +16,14 @@ export async function loadBlogPosts(): Promise<BlogPost[]> {
   if (cachedPosts) {
     return cachedPosts;
   }
-  const module = await import('./blogPosts.data');
+  const module = await import("./blogPosts.data");
   cachedPosts = module.default;
   return cachedPosts;
 }
 
-export async function loadBlogPost(slug: string): Promise<BlogPost | undefined> {
+export async function loadBlogPost(
+  slug: string,
+): Promise<BlogPost | undefined> {
   const posts = await loadBlogPosts();
   return posts.find((post) => post.slug === slug);
 }

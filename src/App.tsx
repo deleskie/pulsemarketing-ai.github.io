@@ -1,15 +1,15 @@
-import React from 'react';
-import { HelmetProvider } from 'react-helmet-async';
-import { Route, Routes } from 'react-router-dom';
-import Layout from './components/Layout';
-import HomePage from './pages/Home';
-import PlatformPage from './pages/Platform';
-import SolutionsPage from './pages/Solutions';
-import PricingPage from './pages/Pricing';
-import ResourcesPage from './pages/Resources';
-import BlogPostPage from './pages/BlogPost';
-import NotFoundPage from './pages/NotFound';
-import ShowcasePage from './pages/Showcase';
+import React from "react";
+import { HelmetProvider } from "react-helmet-async";
+import { Route, Routes } from "react-router-dom";
+import Layout from "./components/Layout";
+import HomePage from "./pages/Home";
+import PlatformPage from "./pages/Platform";
+import SolutionsPage from "./pages/Solutions";
+import PricingPage from "./pages/Pricing";
+import ResourcesPage from "./pages/Resources";
+import BlogPostPage from "./pages/BlogPost";
+import NotFoundPage from "./pages/NotFound";
+import ShowcasePage from "./pages/Showcase";
 
 export default function App(): JSX.Element {
   return (

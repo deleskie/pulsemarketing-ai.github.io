@@ -1,34 +1,35 @@
-import React from 'react';
-import { Helmet } from 'react-helmet-async';
-import { solutions } from '../data/solutions';
-import '../styles/solutions.scss';
+import React from "react";
+import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
+import { solutions } from "../data/solutions";
+import "../styles/solutions.scss";
 
-const CONTACT_EMAIL = 'info@pulsemarketing-ai.com';
-const MAILTO_STRATEGY = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Strategy Session Request')}`;
+const CONTACT_EMAIL = "info@pulsemarketing-ai.com";
+const MAILTO_STRATEGY = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Strategy Session Request")}`;
 
 const playbooks = [
   {
-    title: 'Signal Sprint',
+    title: "Signal Sprint",
     bullets: [
-      'Resonance assessment across bookings, POS, loyalty, and sentiment feeds',
-      'Pulse Playbook configuration with launch cadences and escalation paths',
-      'Storyteller tuning sessions for executive, field, and partner audiences',
+      "Resonance assessment across bookings, POS, loyalty, and sentiment feeds",
+      "Pulse Playbook configuration with launch cadences and escalation paths",
+      "Storyteller tuning sessions for executive, field, and partner audiences",
     ],
   },
   {
-    title: 'Experience Capsule',
+    title: "Experience Capsule",
     bullets: [
-      'On-site activation choreography with staffing, signage, and channel sync',
-      'Audience Amplifier modeling for offers, retargeting, and member loops',
-      'Live control room support during your first marquee activation',
+      "On-site activation choreography with staffing, signage, and channel sync",
+      "Audience Amplifier modeling for offers, retargeting, and member loops",
+      "Live control room support during your first marquee activation",
     ],
   },
   {
-    title: 'Community Flywheel',
+    title: "Community Flywheel",
     bullets: [
-      'Journey Composer design for onboarding, loyalty, and referral arcs',
-      'Guardian Governance calibration with policy simulations and rehearsals',
-      'Success analytics packaged into investor and leadership-ready chronicles',
+      "Journey Composer design for onboarding, loyalty, and referral arcs",
+      "Guardian Governance calibration with policy simulations and rehearsals",
+      "Success analytics packaged into investor and leadership-ready chronicles",
     ],
   },
 ];
@@ -47,10 +48,26 @@ export default function SolutionsPage(): JSX.Element {
         <div className="solutions-hero__inner">
           <div>
             <span className="section__eyebrow">Industry solutions</span>
-            <h1 className="section__title">Tailored playbooks for teams who blur retail, hospitality, and media.</h1>
+            <h1 className="section__title">
+              Practical playbooks for teams who blur retail, hospitality, and
+              media.
+            </h1>
             <p className="section__subtitle">
-              We work alongside experiential pioneers to harmonize launches, loyalty, and storytelling. Every solution layers tech, data, and human rituals so your brand moves with confidence.
+              We partner with experiential pioneers to synchronize launches,
+              loyalty, and storytelling. Each package mixes technology,
+              services, and rituals so your crew knows exactly what happens
+              next.
             </p>
+            <nav
+              className="solutions-hero__nav"
+              aria-label="Browse solutions by industry"
+            >
+              {solutions.map((solution) => (
+                <a key={solution.id} href={`#${solution.id}`}>
+                  {solution.industry}
+                </a>
+              ))}
+            </nav>
           </div>
           <div className="solutions-hero__pillars">
             <div>
@@ -72,16 +89,25 @@ export default function SolutionsPage(): JSX.Element {
       <section className="section solutions-grid">
         <div className="section__header">
           <span className="section__eyebrow">Where we win</span>
-          <h2 className="section__title">Purpose-built for brands that thrive on experience.</h2>
+          <h2 className="section__title">
+            Purpose-built for brands that thrive on experience.
+          </h2>
           <p className="section__subtitle">
-            Pulse Marketing AI removes the friction between planning, activation, and measurement—whether you are lighting up a rooftop, coordinating 200 boutiques, or powering an agency collective.
+            Pulse Marketing AI removes the friction between planning,
+            activation, and measurement—whether you are lighting up a rooftop,
+            coordinating 200 boutiques, or powering an agency collective.
           </p>
         </div>
         <div className="solutions-grid__tiles">
           {solutions.map((solution) => (
-            <article key={solution.id}>
-              <h3>{solution.industry}</h3>
+            <article key={solution.id} id={solution.id}>
+              <h3>For {solution.industry}</h3>
               <p>{solution.headline}</p>
+              <div className="solutions-grid__metrics">
+                {solution.metrics.map((metric) => (
+                  <span key={metric}>{metric}</span>
+                ))}
+              </div>
               <div className="solutions-grid__columns">
                 <div>
                   <h4>Challenges we solve</h4>
@@ -100,6 +126,21 @@ export default function SolutionsPage(): JSX.Element {
                   </ul>
                 </div>
               </div>
+              <blockquote className="solutions-grid__testimonial">
+                <p>“{solution.testimonial.quote}”</p>
+                <cite>{solution.testimonial.attribution}</cite>
+              </blockquote>
+              <div className="solutions-grid__cta">
+                {solution.cta.link.startsWith("mailto:") ? (
+                  <a className="btn btn--ghost" href={solution.cta.link}>
+                    {solution.cta.label}
+                  </a>
+                ) : (
+                  <Link className="btn btn--ghost" to={solution.cta.link}>
+                    {solution.cta.label}
+                  </Link>
+                )}
+              </div>
             </article>
           ))}
         </div>
@@ -108,9 +149,13 @@ export default function SolutionsPage(): JSX.Element {
       <section className="section solutions-playbooks">
         <div className="section__header">
           <span className="section__eyebrow">Signature plays</span>
-          <h2 className="section__title">Programs that deliver glow-ups in under 90 days.</h2>
+          <h2 className="section__title">
+            Programs that deliver glow-ups in under 90 days.
+          </h2>
           <p className="section__subtitle">
-            Your subscription unlocks a go-to-market lab that builds systems, trains teams, and co-pilots your first signature activations before handing you the controls.
+            Your subscription unlocks a go-to-market lab that builds systems,
+            trains teams, and co-pilots your first signature activations before
+            handing you the controls.
           </p>
         </div>
         <div className="solutions-playbooks__grid">
@@ -132,13 +177,12 @@ export default function SolutionsPage(): JSX.Element {
           <div>
             <h2>Need a custom chronicle?</h2>
             <p>
-              We love ambitious briefs. Invite us into your war room and we will design a Pulse blueprint that respects your brand standards, tech stack, and partner ecosystem.
+              We love ambitious briefs. Invite us into your war room and we will
+              design a Pulse blueprint that respects your brand standards, tech
+              stack, and partner ecosystem.
             </p>
           </div>
-          <a
-            className="btn btn--primary"
-            href={MAILTO_STRATEGY}
-          >
+          <a className="btn btn--primary" href={MAILTO_STRATEGY}>
             Schedule Strategy Session
           </a>
         </div>

@@ -1,5 +1,9 @@
 .solutions-hero {
-  background: radial-gradient(circle at top left, rgba(95, 46, 255, 0.2), transparent 60%);
+  background: radial-gradient(
+    circle at top left,
+    rgba(95, 46, 255, 0.2),
+    transparent 60%
+  );
 }
 
 .solutions-hero__inner {
@@ -7,6 +11,37 @@
   margin: 0 auto;
   display: grid;
   gap: 3rem;
+}
+
+.solutions-hero__nav {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.solutions-hero__nav a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  color: var(--surface);
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid rgba(95, 46, 255, 0.2);
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.solutions-hero__nav a:hover {
+  background: rgba(255, 255, 255, 0.26);
+}
+
+.solutions-hero__nav a:focus-visible {
+  outline: 2px solid rgba(95, 46, 255, 0.6);
+  outline-offset: 2px;
 }
 
 .solutions-hero__pillars {
@@ -43,6 +78,23 @@
   font-size: 1.6rem;
 }
 
+.solutions-grid__metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.solutions-grid__metrics span {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(95, 46, 255, 0.1);
+  color: var(--surface);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
 .solutions-grid__columns {
   display: grid;
   gap: 1.5rem;
@@ -63,8 +115,38 @@
   color: var(--text-secondary);
 }
 
+.solutions-grid__testimonial {
+  margin: 0;
+  padding: 1.4rem 1.6rem;
+  border-left: 3px solid rgba(95, 46, 255, 0.4);
+  background: rgba(95, 46, 255, 0.06);
+  border-radius: var(--radius-md);
+  display: grid;
+  gap: 0.75rem;
+}
+
+.solutions-grid__testimonial p {
+  margin: 0;
+  color: var(--surface);
+  font-style: italic;
+}
+
+.solutions-grid__testimonial cite {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.solutions-grid__cta {
+  display: flex;
+  justify-content: flex-start;
+}
+
 .solutions-playbooks {
-  background: linear-gradient(140deg, rgba(5, 7, 28, 0.95), rgba(20, 36, 80, 0.92));
+  background: linear-gradient(
+    140deg,
+    rgba(5, 7, 28, 0.95),
+    rgba(20, 36, 80, 0.92)
+  );
   color: #fff;
 }
 
@@ -102,7 +184,11 @@
   margin: 0 auto;
   border-radius: var(--radius-lg);
   padding: 2.6rem;
-  background: linear-gradient(135deg, rgba(95, 46, 255, 0.14), rgba(45, 226, 211, 0.12));
+  background: linear-gradient(
+    135deg,
+    rgba(95, 46, 255, 0.14),
+    rgba(45, 226, 211, 0.12)
+  );
   border: 1px solid rgba(95, 46, 255, 0.1);
   display: grid;
   gap: 1.5rem;

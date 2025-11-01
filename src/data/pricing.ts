@@ -1,72 +1,83 @@
 export interface PricingTier {
   id: string;
   name: string;
-  description: string;
+  purpose: string;
   priceLabel: string;
   bestFor: string;
   highlights: string[];
   includes: string[];
   cta: string;
+  accent: "ignite" | "momentum" | "constellation";
 }
 
 export const pricingTiers: PricingTier[] = [
   {
-    id: 'ignite',
-    name: 'Ignite',
-    description: 'All the essentials to launch a pulse-driven marketing hub, calibrated to experiential brands turning ~$30K in monthly revenue into 4–6% marketing investment.',
-    priceLabel: '$850 / month',
-    bestFor: 'Experiential brands generating around $30K in monthly revenue and dedicating 4–6% to marketing.',
+    id: "ignite",
+    name: "Ignite",
+    purpose:
+      "Build your first pulse-driven marketing hub—launch, learn, and grow with guided strategy and automation.",
+    priceLabel: "$850 / month",
+    bestFor:
+      "Best for early-stage experiential brands generating around $30K/month in revenue and investing 4–6% in marketing.",
     highlights: [
-      'Up to 8 branded workspaces with shared intelligence',
-      'Pulse Playbooks starter library with concierge onboarding',
-      'Benchmarked to 4–6% of revenue marketing investments (≈$30K monthly revenue)',
-      'Storyteller briefings with revenue-minded insights twice weekly',
+      "Up to 8 branded workspaces with shared intelligence",
+      "Pulse Playbooks starter library + concierge onboarding",
+      "Twice-weekly Storyteller briefings with performance insights",
+      "Benchmark-aligned investment guidance for emerging teams",
     ],
     includes: [
-      'Signal Synthesis Grid with core channel connectors',
-      'Audience Amplifier automations across email, SMS, and paid social',
-      'Journey Composer templates tuned for retention and referrals',
-      'Guardian Governance light tier with brand compliance guardrails',
+      "Signal Synthesis Grid (core channel connectors)",
+      "Audience Amplifier automations (email, SMS, paid social)",
+      "Journey Composer templates for retention & referrals",
+      "Guardian Governance light guardrails for brand compliance",
     ],
-    cta: 'Kickstart Ignite',
+    cta: "Kickstart Ignite",
+    accent: "ignite",
   },
   {
-    id: 'momentum',
-    name: 'Momentum',
-    description: 'Scale orchestration, experimentation, and compliance for teams already committing five figures each month to advertising.',
-    priceLabel: '$1,999 / month',
-    bestFor: 'Multi-location collectives investing $10K+ in monthly advertising and scaling launches across markets.',
+    id: "momentum",
+    name: "Momentum",
+    purpose:
+      "Optimize every channel, unify data, and drive faster cycles of creative testing and learning.",
+    priceLabel: "$1,999 / month",
+    bestFor:
+      "Best for growth-stage teams spending $10K+ per month on ads and scaling launches across markets.",
     highlights: [
-      'Unlimited workspaces, roles, and permission tiers',
-      'Dedicated strategist office hours every sprint',
-      'Optimized for brands investing $10K+ in paid media each month',
-      'Experiment velocity lab with quarterly business reviews',
+      "Unlimited workspaces, roles, and permission tiers",
+      "Dedicated strategist office hours each sprint",
+      "Quarterly Experiment Velocity Lab business reviews",
+      "Benchmark alignment for five-figure media investments",
     ],
     includes: [
-      'Everything in Ignite plus advanced spend optimization copilots',
-      'Integration Atlas with Salesforce, HubSpot, Shopify, and Snowflake accelerators',
-      'Experience Lab storyboards with staff enablement rituals',
-      'Guardian Governance pro tier with regulatory simulations',
+      "Everything in Ignite",
+      "Advanced spend-optimization copilots",
+      "Integration Atlas (Salesforce, HubSpot, Shopify, Snowflake)",
+      "Experience Lab storyboards + enablement rituals",
+      "Guardian Governance pro tier with regulatory simulations",
     ],
-    cta: 'Build Momentum',
+    cta: "Build Momentum",
+    accent: "momentum",
   },
   {
-    id: 'constellation',
-    name: 'Constellation',
-    description: 'Co-create new revenue lines with our product lab, data scientists, and immersive activation crews.',
-    priceLabel: 'Custom partnership',
-    bestFor: 'Futurist groups investing in experiential pop-ups, hospitality labs, and multi-brand ventures.',
+    id: "constellation",
+    name: "Constellation",
+    purpose:
+      "Work directly with our product, data, and creative engineering teams to prototype, measure, and scale what’s next.",
+    priceLabel: "Custom partnership",
+    bestFor:
+      "Best for multi-brand ventures and innovation labs co-creating new products, pop-ups, and data-driven activations.",
     highlights: [
-      'Embedded product and data pods with roadmap influence',
-      'Private model hosting and data residency options',
-      'Innovation residencies and immersive launch coverage',
+      "Embedded product and data pods with roadmap influence",
+      "Private model hosting and data residency options",
+      "Innovation residencies and immersive launch coverage",
     ],
     includes: [
-      'All Momentum capabilities plus bespoke module design',
-      'Dedicated analytics engineers and Storyteller scriptwriters',
-      'On-site activation crews and executive enablement training',
-      'Joint innovation council with quarterly showcase summits',
+      "All Momentum capabilities plus bespoke module design",
+      "Dedicated analytics engineers and Storyteller scriptwriters",
+      "On-site activation crews and executive enablement training",
+      "Joint Innovation Council with quarterly showcase summits",
     ],
-    cta: 'Design Constellation',
+    cta: "Design Constellation",
+    accent: "constellation",
   },
 ];

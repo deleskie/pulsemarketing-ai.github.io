@@ -1,5 +1,9 @@
 .showcase-hero {
-  background: linear-gradient(140deg, rgba(5, 7, 28, 0.95), rgba(20, 36, 80, 0.9));
+  background: linear-gradient(
+    140deg,
+    rgba(5, 7, 28, 0.95),
+    rgba(20, 36, 80, 0.9)
+  );
   color: #fff;
 }
 
@@ -44,24 +48,38 @@
   gap: 1rem;
 }
 
-.showcase-projects__metrics div {
+.showcase-projects__metric {
   border-radius: 18px;
   padding: 1.4rem;
-  background: linear-gradient(135deg, rgba(95, 46, 255, 0.14), rgba(45, 226, 211, 0.12));
+  background: linear-gradient(
+    135deg,
+    rgba(95, 46, 255, 0.14),
+    rgba(45, 226, 211, 0.12)
+  );
   border: 1px solid rgba(95, 46, 255, 0.08);
   display: grid;
   gap: 0.25rem;
 }
 
-.showcase-projects__metrics span {
+.showcase-projects__metric span {
   font-size: 1.8rem;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.96);
   text-shadow: 0 8px 20px rgba(9, 13, 46, 0.4);
 }
 
-.showcase-projects__metrics p {
+.showcase-projects__metric p {
   color: rgba(236, 242, 255, 0.78);
+}
+
+.showcase-projects__metric small {
+  color: rgba(236, 242, 255, 0.9);
+  font-size: 0.85rem;
+}
+
+.showcase-projects__cta {
+  display: flex;
+  justify-content: flex-start;
 }
 
 .showcase-timeline {
@@ -83,9 +101,26 @@
   gap: 0.75rem;
 }
 
+.showcase-timeline__step {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
 .showcase-timeline__grid h3 {
   font-size: 1.4rem;
   color: var(--gradient-start);
+}
+
+.showcase-timeline__cta {
+  color: var(--gradient-start);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.showcase-timeline__cta:hover {
+  text-decoration: underline;
 }
 
 @media (min-width: 980px) {

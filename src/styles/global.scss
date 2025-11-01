@@ -1,4 +1,4 @@
-@use 'sass:color';
+@use "sass:color";
 
 :root {
   --gradient-start: #5f2eff;
@@ -16,7 +16,7 @@
   --accent: #f8c537;
   --accent-dark: #f59e0b;
   --accent-soft: rgba(248, 197, 55, 0.18);
-  --font-sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
 }
 
 *,
@@ -48,9 +48,21 @@ body {
   font-family: var(--font-sans);
   color: var(--text-primary);
   background:
-    radial-gradient(circle at 12% 18%, rgba(95, 46, 255, 0.22), transparent 55%),
-    radial-gradient(circle at 82% 8%, rgba(45, 226, 211, 0.18), transparent 60%),
-    radial-gradient(circle at 50% 100%, rgba(124, 255, 178, 0.12), transparent 65%),
+    radial-gradient(
+      circle at 12% 18%,
+      rgba(95, 46, 255, 0.22),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 82% 8%,
+      rgba(45, 226, 211, 0.18),
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(124, 255, 178, 0.12),
+      transparent 65%
+    ),
     #f4f6ff;
   -webkit-font-smoothing: antialiased;
   line-height: 1.6;
@@ -62,7 +74,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'General Sans', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  font-family: "General Sans", "Inter", "Helvetica Neue", Arial, sans-serif;
   margin: 0;
   color: var(--surface);
 }
@@ -89,13 +101,20 @@ img {
   border-radius: 999px;
   padding: 0.75rem 1.75rem;
   font-weight: 600;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
   border: none;
   cursor: pointer;
 }
 
 .btn--primary {
-  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  background: linear-gradient(
+    135deg,
+    var(--gradient-start),
+    var(--gradient-end)
+  );
   color: #fff;
   box-shadow: 0 18px 42px rgba(95, 46, 255, 0.32);
 }
