@@ -118,7 +118,7 @@ export default function ResourcesPage(): JSX.Element {
               <h3>{guide.title}</h3>
               <p>{guide.description}</p>
               <a href={guide.link} className="btn btn--ghost">
-                Download preview
+                Request preview
               </a>
             </article>
           ))}
@@ -140,7 +140,7 @@ export default function ResourcesPage(): JSX.Element {
               <p className="resources-webinars__date">{webinar.date}</p>
               <p>{webinar.presenters}</p>
               <a href={webinar.link} className="btn btn--ghost">
-                Save your seat
+                Request invite
               </a>
             </article>
           ))}
@@ -155,11 +155,8 @@ export default function ResourcesPage(): JSX.Element {
               We’re assembling a team across product, engineering, design, and experience strategy to help brands deliver unforgettable moments. If blending art and systems is your craft, let’s talk.
             </p>
           </div>
-          <a
-            className="btn btn--primary"
-            href={makeMailto('Careers inquiry')}
-          >
-            View open roles
+          <a className="btn btn--primary" href={makeMailto('Careers inquiry')}>
+            Email us about roles
           </a>
         </div>
       </section>
