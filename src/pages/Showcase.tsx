@@ -58,31 +58,22 @@ export default function ShowcasePage(): JSX.Element {
       <section className="section showcase-cases" aria-label="Case studies">
         <div className="case-grid">
           {showcaseProjects.map((project) => (
-            <article
-              key={project.id}
-              id={project.id}
-              className="case-card"
-              aria-labelledby={`${project.id}-title`}
-            >
-              <h3>{project.customer}</h3>
-              <h2 id={`${project.id}-title`}>{project.headline}</h2>
-              <p>{project.summary}</p>
-              <p>{project.story}</p>
-              <div className="case-card__impact">
-                <h4>Impact</h4>
-                <ul>
-                  {project.metrics.map((metric) => (
-                    <li key={`${project.id}-${metric.label}`}>
-                      <strong>{metric.value}</strong>
-                      <span>
-                        {metric.label}
-                        {metric.context ? ` — ${metric.context}` : ""}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+            <div key={project.id} id={project.id} className="case-study-card">
+              <article className="case-card" aria-labelledby={`${project.id}-title`}>
+                <h3>{project.customer}</h3>
+                <h2 id={`${project.id}-title`}>{project.headline}</h2>
+                <p>{project.summary}</p>
+                <p>{project.story}</p>
+              </article>
+              <div className="metrics" aria-label={`${project.customer} impact metrics`}>
+                {project.metrics.map((metric) => (
+                  <div key={`${project.id}-${metric.label}`} className="metric">
+                    <strong>{metric.value}</strong>
+                    <span>{metric.label}</span>
+                  </div>
+                ))}
               </div>
-            </article>
+            </div>
           ))}
         </div>
         <div className="cta">
