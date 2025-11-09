@@ -79,7 +79,7 @@ export default function ShowcasePage(): JSX.Element {
       </section>
 
       <section className="section showcase-cases" aria-label="Case studies">
-        <div className="showcase-cases__grid">
+        <div className="case-grid">
           {showcaseProjects.map((project) => (
             <article
               key={project.id}
@@ -87,38 +87,23 @@ export default function ShowcasePage(): JSX.Element {
               className="case-card"
               aria-labelledby={`${project.id}-title`}
             >
-              <div
-                className="case-card__media"
-                style={{ backgroundImage: project.visual.gradient }}
-              >
-                <img
-                  src={project.visual.image}
-                  alt={project.visual.alt}
-                  loading="lazy"
-                />
+              <h3>{project.customer}</h3>
+              <h2 id={`${project.id}-title`}>{project.headline}</h2>
+              <p>{project.summary}</p>
+              <p>{project.story}</p>
+              <div className="metrics">
+                {project.metrics.map((metric) => (
+                  <div key={`${project.id}-${metric.label}`} className="metric">
+                    <strong>{metric.value}</strong>
+                    <span>{metric.label}</span>
+                    {metric.context ? <small>{metric.context}</small> : null}
+                  </div>
+                ))}
               </div>
-              <div className="case-card__body">
-                <p className="case-card__eyebrow">{project.customer}</p>
-                <h2 id={`${project.id}-title`}>{project.headline}</h2>
-                <p>{project.summary}</p>
-                <p>{project.story}</p>
-                <div className="case-card__metrics">
-                  {project.metrics.map((metric) => (
-                    <div
-                      key={`${project.id}-${metric.label}`}
-                      className="case-card__metric"
-                    >
-                      <span>{metric.value}</span>
-                      <p>{metric.label}</p>
-                      <small>{metric.context}</small>
-                    </div>
-                  ))}
-                </div>
-                <div className="case-card__cta">
-                  <a href={project.cta.link} className="btn btn--ghost">
-                    {project.cta.label}
-                  </a>
-                </div>
+              <div className="case-card__cta">
+                <a href={project.cta.link} className="btn btn--ghost">
+                  {project.cta.label}
+                </a>
               </div>
             </article>
           ))}
