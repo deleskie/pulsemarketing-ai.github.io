@@ -1,58 +1,50 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
 import { showcaseProjects } from "../data/showcase";
 import "../styles/showcase.scss";
 
-const timeline = [
+const CONTACT_EMAIL = "info@pulsemarketing-ai.com";
+const SITE_URL = "https://www.pulsemarketing-ai.com";
+
+const processSteps = [
   {
     label: "Discover",
     description:
-      "We map your experiential calendar, data landscape, and partner ecosystem with cross-functional stakeholders.",
-    cta: {
-      label: "Download the discovery checklist",
-      link: "/resources#guides",
-    },
+      "We map your experiential calendar, data landscape, and partner ecosystem to surface growth levers and quick wins.",
   },
   {
     label: "Design",
     description:
-      "Joint teams craft a Pulse blueprint, automation backlog, and storytelling plan anchored in your KPIs.",
-    cta: {
-      label: "Preview a sample blueprint",
-      link: "/platform#modules",
-    },
+      "Together we build a Pulse blueprint—automation backlog, creative story arcs, and guardrails tied to your KPIs.",
   },
   {
     label: "Launch",
     description:
-      "We run immersion sprints, calibrate guardrails, and connect your stack to the Pulse Resonance Graph.",
-    cta: {
-      label: "Schedule an immersion sprint",
-      link: "mailto:info@pulsemarketing-ai.com?subject=Book%20a%20Pulse%20immersion%20sprint",
-    },
+      "Immersion sprints connect your stack to the Resonance Graph while calibrating safeguards and reporting flows.",
   },
   {
     label: "Scale",
     description:
-      "Experiment coaches, analysts, and experience strategists help you compound wins and expand into new programs.",
-    cta: {
-      label: "Meet an experiment coach",
-      link: "mailto:info@pulsemarketing-ai.com?subject=Meet%20an%20experiment%20coach",
-    },
+      "Experiment coaches and strategists help you compound wins, expand into new markets, and activate advanced modules.",
   },
 ];
 
-const parseMetricFill = (value: string): number => {
-  const match = value.match(/-?\d+(\.\d+)?/);
-  if (!match) {
-    return 45;
-  }
-  const numeric = Math.abs(parseFloat(match[0]));
-  if (Number.isNaN(numeric)) {
-    return 45;
-  }
-  return Math.min(100, Math.max(20, numeric));
+const caseStudySchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: showcaseProjects.map((project, index) => ({
+    "@type": "CaseStudy",
+    name: project.customer,
+    headline: project.headline,
+    description: project.summary,
+    image: project.visual.image,
+    url: `${SITE_URL}/showcase#${project.id}`,
+    position: index + 1,
+    author: {
+      "@type": "Organization",
+      name: "Pulse Marketing AI",
+    },
+  })),
 };
 
 export default function ShowcasePage(): JSX.Element {
@@ -62,71 +54,70 @@ export default function ShowcasePage(): JSX.Element {
         <title>Showcase — Pulse Marketing AI</title>
         <meta
           name="description"
-          content="See how hospitality, retail, and experiential leaders use Pulse Marketing AI to orchestrate luminous launches, compound experimentation, and deliver unforgettable guest moments."
+          content="Explore Pulse Marketing AI case studies—how brands like Orion Atrium Hotels, Nova Boutiques, and Circuit Fitness Labs orchestrated measurable growth with AI-powered marketing automation."
         />
+        <meta
+          name="keywords"
+          content="Pulse Marketing AI case studies, AI marketing automation examples, experiential marketing AI, campaign orchestration results"
+        />
+        <script type="application/ld+json">
+          {JSON.stringify(caseStudySchema)}
+        </script>
       </Helmet>
+
       <section className="section showcase-hero">
         <div className="showcase-hero__inner">
           <span className="section__eyebrow">Showcase</span>
-          <h1 className="section__title">
-            How innovators glow with Pulse Marketing AI.
-          </h1>
-          <p className="section__subtitle">
-            Discover real-world stories of teams replacing legacy suites,
-            accelerating experiments, and amplifying results with a signal-led
-            experiential marketing studio.
+          <h1>Showcase: How Innovators Glow with Pulse</h1>
+          <p>
+            Real teams, real results—from luxury hotels to boutique collectives
+            and fitness studios. Discover how brands replaced legacy suites,
+            accelerated experiments, and amplified outcomes with Pulse Marketing
+            AI.
           </p>
         </div>
       </section>
 
-      <section className="section showcase-projects">
-        <div className="showcase-projects__grid">
+      <section className="section showcase-cases" aria-label="Case studies">
+        <div className="showcase-cases__grid">
           {showcaseProjects.map((project) => (
-            <article key={project.id} className="showcase-projects__card">
-              <header>
-                <span>{project.customer}</span>
-                <h2>{project.headline}</h2>
-              </header>
-              <p>{project.summary}</p>
+            <article
+              key={project.id}
+              id={project.id}
+              className="case-card"
+              aria-labelledby={`${project.id}-title`}
+            >
               <div
-                className="showcase-projects__visual"
+                className="case-card__media"
                 style={{ backgroundImage: project.visual.gradient }}
               >
-                <span className="sr-only">{project.visual.alt}</span>
+                <img
+                  src={project.visual.image}
+                  alt={project.visual.alt}
+                  loading="lazy"
+                />
               </div>
-              <div className="showcase-projects__metrics">
-                {project.metrics.map((metric) => {
-                  const fill = parseMetricFill(metric.value);
-                  return (
+              <div className="case-card__body">
+                <p className="case-card__eyebrow">{project.customer}</p>
+                <h2 id={`${project.id}-title`}>{project.headline}</h2>
+                <p>{project.summary}</p>
+                <p>{project.story}</p>
+                <div className="case-card__metrics">
+                  {project.metrics.map((metric) => (
                     <div
-                      key={metric.label}
-                      className="showcase-projects__metric"
+                      key={`${project.id}-${metric.label}`}
+                      className="case-card__metric"
                     >
                       <span>{metric.value}</span>
                       <p>{metric.label}</p>
                       <small>{metric.context}</small>
-                      <div
-                        className="showcase-projects__metric-chart"
-                        aria-hidden="true"
-                      >
-                        <span style={{ width: `${fill}%` }} />
-                      </div>
                     </div>
-                  );
-                })}
-              </div>
-              <div className="showcase-projects__story">
-                <p>{project.story}</p>
-                <div className="showcase-projects__cta">
-                  {project.cta.link.startsWith("mailto:") ? (
-                    <a href={project.cta.link} className="btn btn--ghost">
-                      {project.cta.label}
-                    </a>
-                  ) : (
-                    <Link to={project.cta.link} className="btn btn--ghost">
-                      {project.cta.label}
-                    </Link>
-                  )}
+                  ))}
+                </div>
+                <div className="case-card__cta">
+                  <a href={project.cta.link} className="btn btn--ghost">
+                    {project.cta.label}
+                  </a>
                 </div>
               </div>
             </article>
@@ -134,30 +125,56 @@ export default function ShowcasePage(): JSX.Element {
         </div>
       </section>
 
-      <section className="section showcase-timeline">
-        <div className="section__header">
+      <section className="section showcase-process">
+        <div className="showcase-process__header">
           <span className="section__eyebrow">Partnership journey</span>
-          <h2 className="section__title">
-            From strategy to scale in four stages.
-          </h2>
+          <h2>The Partnership Journey</h2>
+          <p>
+            Every engagement follows the same pulse: discover, design, launch,
+            then scale with experiment coaches who keep your team glowing.
+          </p>
         </div>
-        <div className="showcase-timeline__grid">
-          {timeline.map((step, index) => (
+        <div className="showcase-process__steps">
+          {processSteps.map((step) => (
             <article key={step.label}>
-              <span className="showcase-timeline__step">Step {index + 1}</span>
               <h3>{step.label}</h3>
               <p>{step.description}</p>
-              {step.cta.link.startsWith("mailto:") ? (
-                <a href={step.cta.link} className="showcase-timeline__cta">
-                  {step.cta.label}
-                </a>
-              ) : (
-                <Link to={step.cta.link} className="showcase-timeline__cta">
-                  {step.cta.label}
-                </Link>
-              )}
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="section showcase-cta">
+        <div className="showcase-cta__inner">
+          <h2>Ready to Build Your Pulse Story?</h2>
+          <p>
+            Share your launch calendar and we will curate a case study
+            walk-through tailored to your market, data, and story arcs.
+          </p>
+          <a
+            className="btn btn--primary"
+            href={`mailto:${CONTACT_EMAIL}?subject=Showcase Inquiry`}
+          >
+            Talk to a Strategist
+          </a>
+        </div>
+      </section>
+
+      <section className="section showcase-checklist">
+        <div className="showcase-checklist__inner">
+          <h3>Implementation Checklist</h3>
+          <ul>
+            <li>Replace image placeholders with production asset URLs.</li>
+            <li>
+              Ensure the case grid displays three cards on desktop and stacks
+              gracefully on mobile.
+            </li>
+            <li>Add pulse-hover animation on metrics for subtle motion cues.</li>
+            <li>Verify alt text and contrast ratios for WCAG AA compliance.</li>
+            <li>Validate CaseStudy structured data (now included).</li>
+            <li>Keep meta description and keywords optimized for search.</li>
+          </ul>
+          <p>© 2025 Pulse Marketing AI · {CONTACT_EMAIL}</p>
         </div>
       </section>
     </>

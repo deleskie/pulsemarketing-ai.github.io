@@ -8,6 +8,7 @@ export interface ShowcaseProject {
   visual: {
     gradient: string;
     alt: string;
+    image: string;
   };
   cta: {
     label: string;
@@ -47,7 +48,8 @@ export const showcaseProjects: ShowcaseProject[] = [
     ],
     visual: {
       gradient: "linear-gradient(135deg, #1f2b6c, #5f2eff)",
-      alt: "Dashboard mock of hospitality control room",
+      alt: "Hotel lobby and digital concierge dashboard",
+      image: "/media/showcase/orion-atrium.jpg",
     },
     cta: {
       label: "See the hospitality blueprint",
@@ -85,7 +87,8 @@ export const showcaseProjects: ShowcaseProject[] = [
     ],
     visual: {
       gradient: "linear-gradient(135deg, #14213d, #ff8ba7)",
-      alt: "Stylized chart of boutique drop performance",
+      alt: "Boutique retail storefront with kinetic displays",
+      image: "/media/showcase/nova-boutiques.jpg",
     },
     cta: {
       label: "Download the retail case brief",
@@ -123,7 +126,8 @@ export const showcaseProjects: ShowcaseProject[] = [
     ],
     visual: {
       gradient: "linear-gradient(135deg, #102a43, #47ffbf)",
-      alt: "Illustration of member journey touchpoints",
+      alt: "Fitness instructors reviewing Pulse dashboard",
+      image: "/media/showcase/circuit-fitness.jpg",
     },
     cta: {
       label: "Talk through the wellness playbook",
