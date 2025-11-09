@@ -31,67 +31,70 @@
   gap: 2rem;
 }
 
-.case-card {
+.case-study-card {
+  position: relative;
   background: #fff;
-  color: #111;
-  padding: 2rem;
-  border-radius: 14px;
-  box-shadow: 0 3px 25px rgba(0, 0, 0, 0.05);
+  border-radius: 24px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  padding: 2rem 1.5rem 6rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  justify-content: space-between;
+  color: #0b0b1a;
 }
 
-.case-card h3 {
+.case-study-card h3 {
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: #5a5a65;
-  margin: 0;
+  margin: 0 0 0.5rem;
 }
 
-.case-card h2 {
-  font-size: 1.3rem;
-  margin: 0;
-  color: #0f142d;
+.case-study-card h2 {
+  font-size: 1.35rem;
+  margin: 0 0 1rem;
 }
 
-.case-card p {
-  margin: 0;
+.case-study-card p {
+  margin: 0 0 1rem;
   color: #444;
   line-height: 1.6;
 }
 
-.case-card__impact h4 {
-  color: #00a8a0;
-  font-size: 1rem;
-  margin-bottom: 0.75rem;
-}
-
-.case-card__impact ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 0.75rem;
-}
-
-.case-card__impact li {
+.case-study-card .metrics {
   position: relative;
-  padding-left: 1.25rem;
-  line-height: 1.5;
-  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+  z-index: 10;
 }
 
-.case-card__impact li::before {
-  content: "▸";
-  position: absolute;
-  left: 0;
-  color: #00a8a0;
+.case-study-card .metric {
+  flex: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(235, 240, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.9) 100%
+  );
+  border-radius: 16px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #0b0b1a;
+  padding: 1rem 0.5rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6px);
+  z-index: 10;
 }
 
-.case-card__impact strong {
-  color: #000;
+.case-study-card .metric span {
+  display: block;
+  line-height: 1.4;
+  color: #0b0b1a;
 }
 
 .cta {
@@ -116,7 +119,8 @@
 }
 
 @media (max-width: 768px) {
-  .case-card {
-    padding: 1.5rem;
+  .case-study-card .metrics {
+    flex-direction: column;
+    align-items: stretch;
   }
 }
