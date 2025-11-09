@@ -1,57 +1,105 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { pricingTiers } from "../data/pricing";
-import { planCoverage } from "../data/plans";
-import { features } from "../data/features";
-import Term from "../components/Term";
 import "../styles/pricing.scss";
 
 const CONTACT_EMAIL = "info@pulsemarketing-ai.com";
+const SITE_URL = "https://www.pulsemarketing-ai.com";
 const makeMailto = (subject: string) =>
   `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}`;
 
-const SUCCESS_PLAN_DEFINITION =
-  "A collaborative working session where we map your channels, regions, and staffing to the Pulse modules you need, then confirm pricing before activation.";
-
 const faqs = [
   {
-    question: "How do you determine final pricing?",
+    question: "How is final pricing determined?",
     answer:
-      "Each partnership begins with a Resonance Discovery—mapping your channels, data sources, and activation goals. Pricing is then calibrated to the surfaces we are lighting up together.",
+      "Every engagement begins with a Resonance Discovery session where we map your data sources and activation calendar. Pricing aligns to the scope we activate together—no hidden add-ons.",
   },
   {
     question: "Can we start with a pilot?",
     answer:
-      "Yes. Ignite is intentionally staged. We launch one flagship concept, measure performance, then expand. Momentum and Constellation can layer on once you are ready.",
+      "Yes. Ignite is staged for flagship launch pilots. We measure impact, then expand. Momentum and Constellation layer in once you’re ready for full orchestration.",
   },
   {
-    question: "What support do we receive?",
+    question: "What services come with each tier?",
     answer:
-      "All tiers include onboarding concierges, enablement workshops, and Storyteller briefings. Momentum adds strategist office hours and Experiment Velocity Lab reviews, while Constellation provides embedded advisors and 24/7 executive response.",
+      "All tiers include onboarding concierges, enablement workshops, and Storyteller briefings. Momentum adds dedicated strategists and experiment coaches, while Constellation includes embedded product and activation pods.",
+  },
+  {
+    question: "How do support and SLAs work?",
+    answer:
+      "Ignite includes business-hours coverage with rapid chat escalation. Momentum adds regional on-call rotations, and Constellation offers 24/7 white-glove response with named advisors.",
   },
 ];
 
-const successPlanSteps = [
+const checklistItems = [
   {
-    title: "1. Resonance Discovery",
-    description:
-      "We inventory your launch calendar, data sources, and brand standards to understand the scope of your marketing studio.",
+    label:
+      "Ensure pricing grid renders 3-column on desktop, stacked on mobile.",
   },
   {
-    title: "2. Blueprint Workshop",
-    description:
-      "Together we prioritize programs, map automations, and identify the Pulse modules required for your first 90 days.",
+    label:
+      "CTAs use mailto links (or swap for form modals) for immediate inquiries.",
   },
   {
-    title: "3. Investment Calibration",
-    description:
-      "We align your targets with the right tier, confirm any add-ons, and finalize a roll-out timeline with clear milestones.",
+    label: "Maintain contrast ratio ≥ 4.5:1 for WCAG AA compliance.",
+  },
+  {
+    label: "Optional hover glow on plan cards to reinforce the Pulse aesthetic.",
+  },
+  {
+    label: "Meta description & keywords ready for SEO crawl.",
+  },
+  {
+    label: "Add structured data (Organization + Product schema) in production.",
   },
 ];
 
-const coverageModules = features.filter((feature) =>
-  planCoverage.some((plan) => plan.modules.includes(feature.id)),
-);
+const parsePrice = (label: string): number | null => {
+  const numeric = label.replace(/[^0-9.]/g, "");
+  return numeric ? Number(numeric) : null;
+};
+
+const productSchemas = pricingTiers.map((tier) => {
+  const priceValue = parsePrice(tier.priceLabel);
+  const base = {
+    "@type": "Product",
+    name: `Pulse Marketing AI — ${tier.name}`,
+    description: tier.purpose,
+    category: "SoftwareApplication",
+    brand: {
+      "@type": "Brand",
+      name: "Pulse Marketing AI",
+    },
+    url: `${SITE_URL}/pricing#plans`,
+  } as Record<string, unknown>;
+
+  if (priceValue !== null) {
+    base.offers = {
+      "@type": "Offer",
+      priceCurrency: "USD",
+      price: priceValue,
+      availability: "https://schema.org/InStock",
+      url: `${SITE_URL}/pricing#plans`,
+    };
+  }
+
+  return base;
+});
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Pulse Marketing AI",
+  url: SITE_URL,
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      contactType: "sales",
+      email: CONTACT_EMAIL,
+    },
+  ],
+  makesOffer: productSchemas,
+};
 
 export default function PricingPage(): JSX.Element {
   return (
@@ -60,87 +108,47 @@ export default function PricingPage(): JSX.Element {
         <title>Pricing — Pulse Marketing AI</title>
         <meta
           name="description"
-          content="Compare Pulse Marketing AI programs built for Ignite, Momentum, and Constellation brands. Transparent pricing aligned to your experiential growth stage."
+          content="Compare pricing for Pulse Marketing AI programs. Choose from Ignite, Momentum, or Constellation—each combining software, strategy, and storytelling scaled to your growth."
         />
+        <meta
+          name="keywords"
+          content="Pulse Marketing AI pricing, AI marketing platform plans, launch automation pricing, experiential marketing software"
+        />
+        <script type="application/ld+json">
+          {JSON.stringify(organizationSchema)}
+        </script>
       </Helmet>
-      <section className="section pricing-hero">
-        <div className="pricing-hero__inner">
-          <div>
-            <span className="section__eyebrow">Pricing</span>
-            <h1 className="section__title">
-              Programs that scale with your brand’s momentum.
-            </h1>
-            <p className="section__subtitle">
-              Each tier blends software, strategy, and storytelling. Pricing is
-              transparent and aligned to your stage of growth—so you only invest
-              at the pace your brand is ready for.
-            </p>
-            <p className="pricing-hero__note">
-              A 45-minute{" "}
-              <Term
-                label="Success Plan session"
-                definition={SUCCESS_PLAN_DEFINITION}
-              />{" "}
-              maps your footprint—locations, channels, staffing—and calibrates
-              subscription pricing before anything launches. You see the
-              numbers and rollout plan on the call.
-            </p>
-            <div className="pricing-hero__cta">
-              <a
-                className="btn btn--primary"
-                href={makeMailto("Talk to a strategist about pricing")}
-              >
-                Talk to a Strategist
-              </a>
-              <a className="btn btn--ghost" href="#plans">
-                Compare Plans
-              </a>
-            </div>
-          </div>
+      <section className="section pricing-intro">
+        <div className="pricing-intro__inner">
+          <span className="section__eyebrow">Pricing</span>
+          <h1>Pricing &amp; Programs</h1>
+          <p>
+            Three programs scaled to your growth stage—from your first AI-driven
+            launch to full-scale orchestration. Every plan blends platform
+            access, strategic guidance, and creative enablement.
+          </p>
         </div>
       </section>
 
-      <section className="section pricing-grid" id="plans">
-        <div className="pricing-grid__container">
+      <section className="section pricing-plans" id="plans">
+        <div className="pricing-plans__grid">
           {pricingTiers.map((tier) => (
-            <article
-              key={tier.id}
-              className={`pricing-card pricing-card--${tier.accent}`}
-            >
-              <header className="pricing-card__header">
-                <span className="pricing-card__name">{tier.name}</span>
-              </header>
-              <div
-                className="pricing-card__price"
-                aria-label={`${tier.name} price`}
-              >
-                {tier.priceLabel}
-              </div>
-              <p className="pricing-card__ideal">
-                <strong>Ideal for:</strong> {tier.bestFor}
-              </p>
-              <p className="pricing-card__purpose">{tier.purpose}</p>
-              <div className="pricing-card__sections">
-                <div>
-                  <h3>Highlights</h3>
-                  <ul>
-                    {tier.highlights.map((highlight) => (
-                      <li key={highlight}>{highlight}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h3>Included tools</h3>
-                  <ul>
-                    {tier.includes.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
+            <article key={tier.id} className="plan-card">
+              <div>
+                <h2>{tier.name}</h2>
+                <p className="plan-card__price">{tier.priceLabel}</p>
+                <p className="plan-card__ideal">{tier.bestFor}</p>
+                <ul className="plan-card__features">
+                  {tier.includes.map((feature) => (
+                    <li key={feature}>{feature}</li>
+                  ))}
+                </ul>
               </div>
               <a
-                className="btn btn--primary pricing-card__cta"
-                href={makeMailto(`Pricing inquiry: ${tier.name}`)}
+                className={`btn ${
+                  tier.ctaVariant === "secondary" ? "btn--ghost" : "btn--primary"
+                } plan-card__cta`}
+                href={makeMailto(tier.ctaSubject)}
               >
                 {tier.cta}
               </a>
@@ -149,116 +157,31 @@ export default function PricingPage(): JSX.Element {
         </div>
       </section>
 
-      <section
-        className="section pricing-coverage"
-        aria-labelledby="pricing-coverage-heading"
-      >
-        <div className="pricing-coverage__inner">
-          <div>
-            <span className="section__eyebrow">Module comparison</span>
-            <h2 id="pricing-coverage-heading" className="section__title">
-              See which modules ship with each plan.
-            </h2>
-            <p className="section__subtitle">
-              Every plan starts with the same core foundation; Momentum and
-              Constellation layer on additional automation, integration, and
-              governance modules.
-            </p>
-          </div>
-          <div className="pricing-coverage__table-wrapper">
-            <table className="pricing-coverage__table">
-              <thead>
-                <tr>
-                  <th scope="col">Module</th>
-                  {planCoverage.map((plan) => (
-                    <th scope="col" key={plan.id}>
-                      {plan.name}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {coverageModules.map((module) => (
-                  <tr key={module.id}>
-                    <th scope="row">
-                      <span className="pricing-coverage__module-title">
-                        {module.title}
-                      </span>
-                      <span className="pricing-coverage__module-note">
-                        {module.useCase}
-                      </span>
-                    </th>
-                    {planCoverage.map((plan) => (
-                      <td
-                        key={plan.id}
-                        aria-label={`${module.title} ${plan.name}`}
-                      >
-                        {plan.modules.includes(module.id) ? (
-                          <>
-                            <span className="sr-only">Included</span>
-                            <span
-                              className="pricing-coverage__check"
-                              aria-hidden="true"
-                            >
-                              ✓
-                            </span>
-                          </>
-                        ) : (
-                          <>
-                            <span className="sr-only">Not included</span>
-                            <span
-                              className="pricing-coverage__dash"
-                              aria-hidden="true"
-                            >
-                              —
-                            </span>
-                          </>
-                        )}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <section className="section pricing-success-plan" id="success-plan">
-        <div className="pricing-success-plan__inner">
-          <div>
-            <span className="section__eyebrow">How it works</span>
-            <h2 className="section__title">
-              Your Success Plan session is built to clarify fit fast.
-            </h2>
-            <p className="section__subtitle">
-              In under an hour you will leave with recommended pricing, launch
-              milestones, and the exact modules included in your plan.
-            </p>
-          </div>
-          <div className="pricing-success-plan__steps">
-            {successPlanSteps.map((step) => (
-              <article key={step.title}>
-                <h3>{step.title}</h3>
-                <p>{step.description}</p>
+      <section className="section pricing-faq">
+        <div className="pricing-faq__content">
+          <h2>FAQ — Before You Book</h2>
+          <div className="pricing-faq__items">
+            {faqs.map((faq) => (
+              <article key={faq.question}>
+                <h3>{faq.question}</h3>
+                <p>{faq.answer}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section pricing-faq">
-        <div className="section__header">
-          <span className="section__eyebrow">FAQ</span>
-          <h2 className="section__title">Frequently Asked Questions</h2>
-        </div>
-        <div className="pricing-faq__items">
-          {faqs.map((faq) => (
-            <details key={faq.question}>
-              <summary>{faq.question}</summary>
-              <p>{faq.answer}</p>
-            </details>
-          ))}
+      <section className="section pricing-checklist">
+        <div className="pricing-checklist__inner">
+          <h2>Implementation Checklist</h2>
+          <ul>
+            {checklistItems.map((item) => (
+              <li key={item.label}>{item.label}</li>
+            ))}
+          </ul>
+          <p className="pricing-checklist__footer">
+            © 2025 Pulse Marketing AI · {CONTACT_EMAIL}
+          </p>
         </div>
       </section>
     </>
