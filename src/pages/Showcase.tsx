@@ -6,29 +6,6 @@ import "../styles/showcase.scss";
 const CONTACT_EMAIL = "info@pulsemarketing-ai.com";
 const SITE_URL = "https://www.pulsemarketing-ai.com";
 
-const processSteps = [
-  {
-    label: "Discover",
-    description:
-      "We map your experiential calendar, data landscape, and partner ecosystem to surface growth levers and quick wins.",
-  },
-  {
-    label: "Design",
-    description:
-      "Together we build a Pulse blueprint—automation backlog, creative story arcs, and guardrails tied to your KPIs.",
-  },
-  {
-    label: "Launch",
-    description:
-      "Immersion sprints connect your stack to the Resonance Graph while calibrating safeguards and reporting flows.",
-  },
-  {
-    label: "Scale",
-    description:
-      "Experiment coaches and strategists help you compound wins, expand into new markets, and activate advanced modules.",
-  },
-];
-
 const caseStudySchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
@@ -91,75 +68,30 @@ export default function ShowcasePage(): JSX.Element {
               <h2 id={`${project.id}-title`}>{project.headline}</h2>
               <p>{project.summary}</p>
               <p>{project.story}</p>
-              <div className="metrics">
-                {project.metrics.map((metric) => (
-                  <div key={`${project.id}-${metric.label}`} className="metric">
-                    <strong>{metric.value}</strong>
-                    <span>{metric.label}</span>
-                    {metric.context ? <small>{metric.context}</small> : null}
-                  </div>
-                ))}
-              </div>
-              <div className="case-card__cta">
-                <a href={project.cta.link} className="btn btn--ghost">
-                  {project.cta.label}
-                </a>
+              <div className="case-card__impact">
+                <h4>Impact</h4>
+                <ul>
+                  {project.metrics.map((metric) => (
+                    <li key={`${project.id}-${metric.label}`}>
+                      <strong>{metric.value}</strong>
+                      <span>
+                        {metric.label}
+                        {metric.context ? ` — ${metric.context}` : ""}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </article>
           ))}
         </div>
-      </section>
-
-      <section className="section showcase-process">
-        <div className="showcase-process__header">
-          <span className="section__eyebrow">Partnership journey</span>
-          <h2>The Partnership Journey</h2>
-          <p>
-            Every engagement follows the same pulse: discover, design, launch,
-            then scale with experiment coaches who keep your team glowing.
-          </p>
-        </div>
-        <div className="showcase-process__steps">
-          {processSteps.map((step) => (
-            <article key={step.label}>
-              <h3>{step.label}</h3>
-              <p>{step.description}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="section showcase-cta">
-        <div className="showcase-cta__inner">
-          <h2>Ready to Build Your Pulse Story?</h2>
-          <p>
-            Share your launch calendar and we will curate a case study
-            walk-through tailored to your market, data, and story arcs.
-          </p>
+        <div className="cta">
           <a
-            className="btn btn--primary"
             href={`mailto:${CONTACT_EMAIL}?subject=Showcase Inquiry`}
+            className="cta-btn"
           >
             Talk to a Strategist
           </a>
-        </div>
-      </section>
-
-      <section className="section showcase-checklist">
-        <div className="showcase-checklist__inner">
-          <h3>Implementation Checklist</h3>
-          <ul>
-            <li>Replace image placeholders with production asset URLs.</li>
-            <li>
-              Ensure the case grid displays three cards on desktop and stacks
-              gracefully on mobile.
-            </li>
-            <li>Add pulse-hover animation on metrics for subtle motion cues.</li>
-            <li>Verify alt text and contrast ratios for WCAG AA compliance.</li>
-            <li>Validate CaseStudy structured data (now included).</li>
-            <li>Keep meta description and keywords optimized for search.</li>
-          </ul>
-          <p>© 2025 Pulse Marketing AI · {CONTACT_EMAIL}</p>
         </div>
       </section>
     </>
