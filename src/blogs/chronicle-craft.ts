@@ -9,6 +9,36 @@ const chronicleCraft: BlogPost = {
   excerpt:
     "Storyteller Copilot turns data exhaust into cinematic chronicles. This deep dive unpacks how Pulse Marketing AI customers script, stage, and safeguard the voice that speaks for their brand in real time.",
   tags: ["storytelling", "ai", "creative"],
+  seo: {
+    canonicalUrl:
+      "https://www.deleskie.com/blog/chronicle-craft-live-signals.html",
+    canonicalSlug: "chronicle-craft-live-signals",
+    description:
+      "Storyteller Copilot turns data exhaust into cinematic chronicles. This deep dive unpacks how Pulse Marketing AI customers script, stage, and safeguard the brand voice in real time.",
+    keywords: [
+      "AI storytelling",
+      "marketing chronicles",
+      "Pulse Marketing AI",
+      "brand voice automation",
+      "creative operations",
+      "experiential marketing",
+    ],
+    authorName: "James DeLeskie",
+    authorProfileUrl: "https://www.deleskie.com/#bio",
+    authorSameAs: [
+      "https://www.linkedin.com/in/jimdeleskie",
+      "https://github.com/deleskie",
+      "https://www.pulsesolutions-ai.com/",
+      "https://www.pulsemarketing-ai.com/",
+    ],
+    publisherName: "Pulse Solutions AI",
+    publisherUrl: "https://www.pulsesolutions-ai.com/",
+    publisherLogo: "https://www.pulsesolutions-ai.com/assets/logo.png",
+    image:
+      "https://www.deleskie.com/assets/blog/chronicle-craft-live-signals.jpg",
+    datePublished: "2026-01-18",
+    dateModified: "2026-01-18",
+  },
   content: [
     "Chronicles are the heartbeat of Pulse Marketing AI. They translate rows of data into a living narrative that executives, operators, and brand fans can feel. Yet the craft behind them often hides in the background. I spent three months embedded with Nova Boutiques Collective while they reimagined their Storyteller voice, sat in on late-night editing sessions, and watched as copywriters, analysts, and floor managers negotiated every adjective. The result: a chronicle that feels like a documentary short you cannot stop watching, all generated in near real time by AI copilots who understand the brand’s pulse.",
     "Nova grew from a single vintage shop to a federation of boutiques curating designers, thrifted gems, and local artists across seven neighborhoods. Their marketing team loved data but hated corporate jargon. They wanted chronicles that sounded like the stylists who greet customers—warm, curious, slightly mischievous. Early iterations of Storyteller felt stiff. Paragraphs over-indexed on metrics. Crucial anecdotes died in bullet lists. The team realized they needed to build a writers room around the AI, not simply tweak settings.",

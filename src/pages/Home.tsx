@@ -2,7 +2,6 @@ import React from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ideas } from "../data/ideas";
 import { features } from "../data/features";
 import { testimonials } from "../data/testimonials";
 import "../styles/home.scss";
@@ -19,9 +18,24 @@ const trustLogos = [
 ];
 
 const heroStats = [
-  { value: "72%", label: "Faster launch approvals with AI guardrails" },
-  { value: "3.8x", label: "Lift in winning experiments per quarter" },
-  { value: "11", label: "Signals blended into every Storyteller brief" },
+  { value: "72%", label: "Faster launch approvals" },
+  { value: "3.8×", label: "Lift in winning experiments" },
+  { value: "11", label: "Signals blended per campaign" },
+];
+
+const signatureConcepts = [
+  {
+    title: "Resonance Grid",
+    copy: "Unify live ops, marketing, and guest data into one dashboard that senses momentum and keeps every channel in sync.",
+  },
+  {
+    title: "Signal Ateliers",
+    copy: "Creative automation labs that orchestrate limited-run campaigns, balancing artistry with real-time performance data.",
+  },
+  {
+    title: "Infinity Loop",
+    copy: "Adaptive lifecycle journeys that turn first-time guests into loyal advocates through intelligent storytelling and automation.",
+  },
 ];
 
 const benefitCards = [
@@ -51,7 +65,16 @@ export default function HomePage(): JSX.Element {
         <title>Pulse Marketing AI — Orchestrate Irresistible Launches</title>
         <meta
           name="description"
-          content="Pulse Marketing AI is the experiential marketing command studio for hospitality, retail, and creative collectives that demand luminous, data-backed storytelling."
+          content="Pulse Marketing AI unifies campaign data, creative ops, and customer journeys into one command studio so launch automation, brand storytelling, and guest intelligence stay in rhythm."
+        />
+        <meta
+          name="keywords"
+          content="AI marketing orchestration, launch automation, experiential marketing AI platform, brand storytelling automation, retail experience intelligence"
+        />
+        <meta property="og:title" content="Pulse Marketing AI — Orchestrate Irresistible Launches" />
+        <meta
+          property="og:description"
+          content="Coordinate creative, data, and automation from one command studio built for brands that run on vibes and rigor."
         />
       </Helmet>
       <section className="hero">
@@ -63,36 +86,48 @@ export default function HomePage(): JSX.Element {
             transition={{ duration: 0.6 }}
           >
             <span className="hero__eyebrow">Pulse Marketing AI</span>
-            <h1>
-              AI-guided marketing that turns customer signals into shareable
-              stories and measurable revenue.
-            </h1>
+            <h1>Orchestrate Irresistible Launches with Pulse Marketing AI</h1>
             <p className="hero__subtitle">
-              See what resonates, automate production at scale, and launch with
-              confidence.
-            </p>
-            <p>
-              Give your marketing, ops, and guest teams a shared, data-rich
-              pulse. Pulse Marketing AI spots signals before they fade,
-              translates them into ready-to-use narratives, and keeps every
-              activation on tone, on budget, and on time.
+              Pulse Marketing AI unifies campaign data, creative ops, and
+              customer journeys into one command studio — helping teams launch
+              faster, stay on-brand, and turn signals into sales.
             </p>
             <div className="hero__cta">
-              <Link to="/solutions" className="btn btn--accent">
-                Explore Programs
-              </Link>
-              <Link to="/resources#webinars" className="btn btn--ghost">
-                Watch a Demo
+              <a href={MAILTO_IMMERSION} className="btn btn--accent">
+                Start Campaign
+              </a>
+              <Link to="/platform" className="btn btn--ghost">
+                Explore the Platform
               </Link>
             </div>
-            <ul className="hero__stats">
-              {heroStats.map((stat) => (
-                <li key={stat.label}>
-                  <span>{stat.value}</span>
-                  <p>{stat.label}</p>
-                </li>
-              ))}
-            </ul>
+            <div className="hero__proof">
+              <motion.ul
+                className="proof-stats"
+                initial="hidden"
+                animate="visible"
+                variants={{
+                  hidden: { opacity: 0, y: 16 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { staggerChildren: 0.15 },
+                  },
+                }}
+              >
+                {heroStats.map((stat) => (
+                  <motion.li
+                    key={stat.label}
+                    variants={{
+                      hidden: { opacity: 0, y: 12 },
+                      visible: { opacity: 1, y: 0 },
+                    }}
+                  >
+                    <span>{stat.value}</span>
+                    <p>{stat.label}</p>
+                  </motion.li>
+                ))}
+              </motion.ul>
+            </div>
           </motion.div>
           <motion.div
             className="hero__visual"
@@ -161,32 +196,22 @@ export default function HomePage(): JSX.Element {
         </div>
       </section>
 
-      <section className="section launch-modes" id="ideas">
+      <section className="section concepts" id="concepts">
         <div className="section__header">
           <span className="section__eyebrow">Signature concepts</span>
           <h2 className="section__title">
-            Three distinct ways to activate Pulse Marketing AI.
+            The signature concepts of Pulse Marketing AI orchestration.
           </h2>
           <p className="section__subtitle">
-            Choose a concept that matches the energy of your brand. Each mode
-            blends technology, service, and storytelling into a turnkey
-            experience.
+            Three cinematic prototypes that frame how launch automation, brand
+            storytelling, and guest intelligence stay in sync.
           </p>
         </div>
-        <div className="launch-modes__grid">
-          {ideas.map((idea) => (
-            <article key={idea.id}>
-              <div className="launch-modes__tag">{idea.tagline}</div>
-              <h3>{idea.name}</h3>
-              <p>{idea.description}</p>
-              <ul>
-                {idea.pillars.map((pillar) => (
-                  <li key={pillar.title}>
-                    <strong>{pillar.title}</strong>
-                    <span>{pillar.detail}</span>
-                  </li>
-                ))}
-              </ul>
+        <div className="concept-grid">
+          {signatureConcepts.map((concept) => (
+            <article key={concept.title} className="concept-card">
+              <h3>{concept.title}</h3>
+              <p>{concept.copy}</p>
             </article>
           ))}
         </div>
@@ -302,6 +327,33 @@ export default function HomePage(): JSX.Element {
             </article>
           ))}
         </div>
+      </section>
+
+      <section className="section implementation-checklist" id="immersion">
+        <div className="section__header">
+          <span className="section__eyebrow">Implementation checklist</span>
+          <h2 className="section__title">
+            Benchmarks before we ship your AI marketing orchestration.
+          </h2>
+          <p className="section__subtitle">
+            Every handoff confirms layout precision, SEO alignment, motion
+            polish, and accessibility compliance.
+          </p>
+        </div>
+        <ul className="checklist">
+          <li>Keep cinematic typography with intentional white space.</li>
+          <li>
+            Layer subtle motion cues (gradient pulses, metric shimmer, hover
+            ripple).
+          </li>
+          <li>
+            Optimize mobile with scrollable proof stats and stacked concept
+            cards.
+          </li>
+          <li>Use canonical and OpenGraph tags for mirrored stories.</li>
+          <li>Lead with decisive CTAs like Start Campaign or Book Mapping Session.</li>
+          <li>Ensure accessibility contrast and semantic headings.</li>
+        </ul>
       </section>
 
       <section className="section section--dark">

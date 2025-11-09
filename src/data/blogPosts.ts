@@ -1,3 +1,19 @@
+export interface BlogPostSEO {
+  canonicalUrl?: string;
+  canonicalSlug?: string;
+  description?: string;
+  keywords?: string[];
+  authorName?: string;
+  authorProfileUrl?: string;
+  authorSameAs?: string[];
+  publisherName?: string;
+  publisherUrl?: string;
+  publisherLogo?: string;
+  image?: string;
+  datePublished?: string;
+  dateModified?: string;
+}
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -8,6 +24,7 @@ export interface BlogPost {
   tags: string[];
   content: string[];
   includeCompetitorDisclaimer?: boolean;
+  seo?: BlogPostSEO;
 }
 
 let cachedPosts: BlogPost[] | null = null;

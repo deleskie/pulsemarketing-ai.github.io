@@ -6,6 +6,30 @@ import { loadBlogPost } from "../data/blogPosts";
 import "../styles/blog-post.scss";
 import { formatLongDate } from "../utils/date";
 
+const CANONICAL_BLOG_BASE = "https://www.deleskie.com/blog";
+const DEFAULT_AUTHOR = {
+  name: "James DeLeskie",
+  profileUrl: "https://www.deleskie.com/#bio",
+  sameAs: [
+    "https://www.linkedin.com/in/jimdeleskie",
+    "https://github.com/deleskie",
+    "https://www.pulsesolutions-ai.com/",
+    "https://www.pulsemarketing-ai.com/",
+  ],
+};
+const DEFAULT_PUBLISHER = {
+  name: "Pulse Solutions AI",
+  url: "https://www.pulsesolutions-ai.com/",
+  logo: "https://www.pulsesolutions-ai.com/assets/logo.png",
+};
+const DEFAULT_SOCIAL_IMAGE =
+  "https://www.deleskie.com/assets/blog/default-og.jpg";
+
+function buildCanonicalUrl(slug: string): string {
+  const sanitized = slug.replace(/^\//, "").replace(/\.html?$/, "");
+  return `${CANONICAL_BLOG_BASE}/${sanitized}.html`;
+}
+
 export default function BlogPostPage(): JSX.Element {
   const { slug } = useParams();
   const [post, setPost] = useState<BlogPost | null>(null);
@@ -78,11 +102,85 @@ export default function BlogPostPage(): JSX.Element {
     );
   }
 
+  const canonicalUrl =
+    post.seo?.canonicalUrl ??
+    (post.seo?.canonicalSlug
+      ? buildCanonicalUrl(post.seo.canonicalSlug)
+      : buildCanonicalUrl(post.slug));
+  const description = post.seo?.description ?? post.excerpt;
+  const keywords = post.seo?.keywords ?? post.tags ?? [];
+  const keywordsContent = keywords.length > 0 ? keywords.join(", ") : undefined;
+  const authorName = post.seo?.authorName ?? DEFAULT_AUTHOR.name;
+  const authorProfileUrl =
+    post.seo?.authorProfileUrl ?? DEFAULT_AUTHOR.profileUrl;
+  const authorSameAs = post.seo?.authorSameAs ?? DEFAULT_AUTHOR.sameAs;
+  const publisherName = post.seo?.publisherName ?? DEFAULT_PUBLISHER.name;
+  const publisherUrl = post.seo?.publisherUrl ?? DEFAULT_PUBLISHER.url;
+  const publisherLogo = post.seo?.publisherLogo ?? DEFAULT_PUBLISHER.logo;
+  const socialImage = post.seo?.image ?? DEFAULT_SOCIAL_IMAGE;
+  const datePublished = post.seo?.datePublished ?? post.date;
+  const dateModified = post.seo?.dateModified ?? datePublished;
+  const ogTitle = `${post.title} — by ${authorName}`;
+  const pageTitle = `${post.title} — Pulse Marketing AI Chronicle`;
+  const siteName = "DeLeskie.com";
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description,
+    author: {
+      "@type": "Person",
+      name: authorName,
+      url: authorProfileUrl,
+      sameAs: authorSameAs,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: publisherName,
+      url: publisherUrl,
+      logo: {
+        "@type": "ImageObject",
+        url: publisherLogo,
+      },
+    },
+    image: socialImage,
+    datePublished,
+    dateModified,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": canonicalUrl,
+    },
+  };
+
   return (
     <>
       <Helmet>
-        <title>{post.title} — Pulse Marketing AI Chronicle</title>
-        <meta name="description" content={post.excerpt} />
+        <title>{pageTitle}</title>
+        <meta name="description" content={description} />
+        <meta name="author" content={authorName} />
+        {keywordsContent ? (
+          <meta name="keywords" content={keywordsContent} />
+        ) : null}
+        <link rel="canonical" href={canonicalUrl} />
+        <link rel="alternate" href={canonicalUrl} hreflang="en" />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={ogTitle} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:site_name" content={siteName} />
+        <meta property="og:image" content={socialImage} />
+        <meta property="og:image:alt" content={post.title} />
+        <meta property="article:author" content={authorProfileUrl} />
+        <meta property="article:published_time" content={datePublished} />
+        <meta property="article:modified_time" content={dateModified} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={ogTitle} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={socialImage} />
+        <meta name="twitter:image:alt" content={post.title} />
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
       </Helmet>
       <article className="section blog-post">
         <div className="blog-post__container">

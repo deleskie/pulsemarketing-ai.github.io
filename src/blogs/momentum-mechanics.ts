@@ -10,6 +10,36 @@ const momentumMechanics: BlogPost = {
   excerpt:
     "Momentum is the art of scaling experiences while protecting the intimacy that made them special. This playbook dissects how multi-market hospitality and retail brands use Pulse Marketing AI to multiply impact without turning into corporate machines.",
   tags: ["scaling", "strategy", "multi-location"],
+  seo: {
+    canonicalUrl:
+      "https://www.deleskie.com/blog/momentum-mechanics-experiential-scale.html",
+    canonicalSlug: "momentum-mechanics-experiential-scale",
+    description:
+      "Momentum is the art of scaling experiences while protecting the intimacy that made them special. Learn how hospitality and retail brands use Pulse Marketing AI to multiply impact without losing soul.",
+    keywords: [
+      "experiential scaling",
+      "multi-location marketing",
+      "Pulse Marketing AI",
+      "launch automation",
+      "hospitality innovation",
+      "growth operations",
+    ],
+    authorName: "James DeLeskie",
+    authorProfileUrl: "https://www.deleskie.com/#bio",
+    authorSameAs: [
+      "https://www.linkedin.com/in/jimdeleskie",
+      "https://github.com/deleskie",
+      "https://www.pulsesolutions-ai.com/",
+      "https://www.pulsemarketing-ai.com/",
+    ],
+    publisherName: "Pulse Solutions AI",
+    publisherUrl: "https://www.pulsesolutions-ai.com/",
+    publisherLogo: "https://www.pulsesolutions-ai.com/assets/logo.png",
+    image:
+      "https://www.deleskie.com/assets/blog/momentum-mechanics-experiential-scale.jpg",
+    datePublished: "2026-01-29",
+    dateModified: "2026-01-29",
+  },
   content: [
     "Momentum is a fragile miracle. Brands fight to capture lightning with a debut pop-up or flagship activation. Crowds flock, social buzz peaks, reviews glow—and then the hard part begins. How do you replicate that energy across five, ten, or fifty locations without becoming formulaic? Over the past year I shadowed Circuit Fitness Labs, Velvet & Vinyl supper clubs, and a traveling experiential gallery called Lumen Bloom. Each group used Pulse Marketing AI to scale with precision, protecting soul while compounding revenue. Their lessons form the Momentum Mechanics playbook.",
     "Momentum starts with codifying purpose. Circuit Fitness’ mission is to turn high-intensity workouts into communal rituals. Velvet & Vinyl exists to pair culinary experimentation with analog music culture. Lumen Bloom transforms vacant warehouses into immersive art sanctuaries. Without clear purpose, scaling devolves into copying surface-level aesthetics. Pulse Marketing AI hosts purpose statements inside the platform, linking them to KPIs, automation design, and Storyteller narratives. When teams debate whether a new location fits, they weigh the decision against purpose tags, not just revenue forecasts.",

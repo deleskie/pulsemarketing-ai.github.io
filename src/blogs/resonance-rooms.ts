@@ -9,6 +9,36 @@ const resonanceRooms: BlogPost = {
   excerpt:
     "A field-tested guide for hospitality, retail, and creative collectives that want to turn scattered signals into a living launch control room powered by Pulse Marketing AI.",
   tags: ["resonance", "operations", "hospitality"],
+  seo: {
+    canonicalUrl:
+      "https://www.deleskie.com/blog/building-resonance-control-rooms.html",
+    canonicalSlug: "building-resonance-control-rooms",
+    description:
+      "A guide for hospitality, retail, and creative collectives that want to turn scattered signals into a living launch control room powered by Pulse Marketing AI.",
+    keywords: [
+      "resonance room",
+      "launch control center",
+      "Pulse Marketing AI",
+      "AI hospitality",
+      "marketing command studio",
+      "guest experience operations",
+    ],
+    authorName: "James DeLeskie",
+    authorProfileUrl: "https://www.deleskie.com/#bio",
+    authorSameAs: [
+      "https://www.linkedin.com/in/jimdeleskie",
+      "https://github.com/deleskie",
+      "https://www.pulsesolutions-ai.com/",
+      "https://www.pulsemarketing-ai.com/",
+    ],
+    publisherName: "Pulse Solutions AI",
+    publisherUrl: "https://www.pulsesolutions-ai.com/",
+    publisherLogo: "https://www.pulsesolutions-ai.com/assets/logo.png",
+    image:
+      "https://www.deleskie.com/assets/blog/building-resonance-control-rooms.jpg",
+    datePublished: "2026-01-07",
+    dateModified: "2026-01-07",
+  },
   content: [
     "The first time I walked into Orion Atrium’s improvised launch control room it looked more like a DJ booth than a marketing war room. LED strips pulsed over whiteboards that had been commandeered from banquet staff, bar managers huddled around tablets tracing loyalty heatmaps, and a frantic intern tried to reconcile three competing spreadsheets. The energy was undeniable, but chaos clung to every surface. Orion’s team had stacked up tools over the years without a connective tissue. When a flash sale spiked, no one knew if concierges should push upgrades or direct guests to the rooftop pop-up. The Resonance Room was born out of that friction: a promise that every signal, staffer, and story could move in rhythm without burning the team out.",
     "Resonance is the language we use to describe how moments land inside a venue. It measures whether the vibe matches intent, whether guests feel seen, and whether spend flows where the business needs it to go. Traditional dashboards capture metrics after the fact; a Resonance Room anticipates shifts and orchestrates responses before guests notice seams. Pulse Marketing AI stitches together bookings, point-of-sale, reviews, guest lists, and even weather patterns to build a shared narrative canvas. Instead of wrangling exports, teams see timelines, guardrails, and narrative cues. That canvas became Orion’s nightly ritual: a storyboard for the lobby, the cocktail bar, and the VIP suites that updated every fifteen minutes.",

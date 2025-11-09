@@ -10,6 +10,36 @@ const signalAtelier: BlogPost = {
   excerpt:
     "Signal Ateliers blend creative labs, AI copilots, and production partners into launch collectives. This handbook details how Pulse Marketing AI customers craft limited-run campaigns that sell out without sacrificing brand integrity.",
   tags: ["campaigns", "production", "limited-run"],
+  seo: {
+    canonicalUrl:
+      "https://www.deleskie.com/blog/signal-atelier-limited-run.html",
+    canonicalSlug: "signal-atelier-limited-run",
+    description:
+      "Signal Ateliers blend creative labs, AI copilots, and production partners into launch collectives so limited-run campaigns sell out without sacrificing brand integrity.",
+    keywords: [
+      "Signal Atelier",
+      "limited-run campaign",
+      "Pulse Marketing AI",
+      "creative automation",
+      "launch collective",
+      "experiential marketing",
+    ],
+    authorName: "James DeLeskie",
+    authorProfileUrl: "https://www.deleskie.com/#bio",
+    authorSameAs: [
+      "https://www.linkedin.com/in/jimdeleskie",
+      "https://github.com/deleskie",
+      "https://www.pulsesolutions-ai.com/",
+      "https://www.pulsemarketing-ai.com/",
+    ],
+    publisherName: "Pulse Solutions AI",
+    publisherUrl: "https://www.pulsesolutions-ai.com/",
+    publisherLogo: "https://www.pulsesolutions-ai.com/assets/logo.png",
+    image:
+      "https://www.deleskie.com/assets/blog/signal-atelier-limited-run.jpg",
+    datePublished: "2026-02-21",
+    dateModified: "2026-02-21",
+  },
   content: [
     "Limited-run campaigns feel like controlled chaos. Done right, they flood channels with anticipation, sell out inventory, and leave audiences begging for encores. Done poorly, they exhaust staff, confuse vendors, and erode trust. Signal Ateliers—Pulse Marketing AI’s launch collectives—exist to tip the odds toward brilliance. I embedded with Velvet & Vinyl, Pulse Creative Syndicate, and the indie cosmetics label Halo Bloom during three back-to-back capsules. We deconstructed every step, from inspiration mood boards to post-mortem chronicles, to build the Signal Atelier Handbook.",
     "Atelier work starts with a brief anchored in purpose and constraints. Velvet & Vinyl’s capsule celebrated women-led producers. Pulse Creative’s drop centered on synesthetic installations triggered by biometric sensors. Halo Bloom released an adaptive highlighter reacting to skin pH. Each brief documented desired emotions, non-negotiable constraints (sustainability, accessibility), target outcomes, and cultural references. Pulse Marketing AI stored the briefs, linking them to data sets, guardrails, and creative assets.",

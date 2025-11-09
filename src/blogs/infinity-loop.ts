@@ -9,6 +9,36 @@ const infinityLoop: BlogPost = {
   excerpt:
     "Infinity Loop is Pulse Marketing AI’s framework for turning episodic guests into community catalysts. This playbook shows how hospitality, wellness, and cultural brands design adaptive journeys that deepen loyalty with every interaction.",
   tags: ["loyalty", "community", "journey"],
+  seo: {
+    canonicalUrl:
+      "https://www.deleskie.com/blog/infinity-loop-community-playbook.html",
+    canonicalSlug: "infinity-loop-community-playbook",
+    description:
+      "Infinity Loop is Pulse Marketing AI’s framework for turning episodic guests into community catalysts with adaptive, AI-guided journeys.",
+    keywords: [
+      "Infinity Loop",
+      "community loyalty",
+      "Pulse Marketing AI",
+      "guest retention",
+      "AI journey orchestration",
+      "experiential marketing",
+    ],
+    authorName: "James DeLeskie",
+    authorProfileUrl: "https://www.deleskie.com/#bio",
+    authorSameAs: [
+      "https://www.linkedin.com/in/jimdeleskie",
+      "https://github.com/deleskie",
+      "https://www.pulsesolutions-ai.com/",
+      "https://www.pulsemarketing-ai.com/",
+    ],
+    publisherName: "Pulse Solutions AI",
+    publisherUrl: "https://www.pulsesolutions-ai.com/",
+    publisherLogo: "https://www.pulsesolutions-ai.com/assets/logo.png",
+    image:
+      "https://www.deleskie.com/assets/blog/infinity-loop-community-playbook.jpg",
+    datePublished: "2026-02-10",
+    dateModified: "2026-02-10",
+  },
   content: [
     "Community is not a membership tier. It is a loop of contribution, recognition, and shared growth. Pulse Marketing AI’s Infinity Loop framework maps that cycle with precision. I observed three brands—Orion Atrium Hotels, Circuit Fitness Labs, and Storyline Public House—build Infinity Loops that transformed guests into active collaborators. They stopped chasing transactional loyalty and started cultivating belonging. The results reshaped retention, referrals, and even product development.",
     "The Infinity Loop begins with intent. Brands ask guests what they hope to feel, learn, or accomplish. Orion captured intents through pre-arrival questionnaires and conversational AI. Circuit embedded intent prompts inside class bookings. Storyline asked patrons which causes they cared about during ticket purchase. Pulse Marketing AI stored intents as journey seeds, shaping recommendations, automations, and Storyteller narratives. When intent shifts—say a guest pivots from celebration to recovery—the loop adapts in real time.",
