@@ -59,17 +59,16 @@ export default function ShowcasePage(): JSX.Element {
         <div className="case-grid">
           {showcaseProjects.map((project) => (
             <div key={project.id} id={project.id} className="case-study-card">
-              <article className="case-card" aria-labelledby={`${project.id}-title`}>
-                <h3>{project.customer}</h3>
-                <h2 id={`${project.id}-title`}>{project.headline}</h2>
-                <p>{project.summary}</p>
-                <p>{project.story}</p>
-              </article>
+              <h3>{project.customer}</h3>
+              <h2 id={`${project.id}-title`}>{project.headline}</h2>
+              <p>{project.summary}</p>
+              <p>{project.story}</p>
               <div className="metrics" aria-label={`${project.customer} impact metrics`}>
                 {project.metrics.map((metric) => (
                   <div key={`${project.id}-${metric.label}`} className="metric">
-                    <strong>{metric.value}</strong>
-                    <span>{metric.label}</span>
+                    <span>
+                      {metric.value} {metric.label}
+                    </span>
                   </div>
                 ))}
               </div>
