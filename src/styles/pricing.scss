@@ -1,0 +1,185 @@
+.pricing-intro {
+  background: linear-gradient(
+      145deg,
+      rgba(5, 7, 28, 0.92),
+      rgba(20, 36, 80, 0.92)
+    ),
+    #050505;
+  color: #f7f9ff;
+  text-align: center;
+  padding-top: clamp(4rem, 8vw, 6rem);
+  padding-bottom: clamp(3rem, 6vw, 4.5rem);
+}
+
+.pricing-intro__inner {
+  max-width: 780px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1.2rem;
+}
+
+.pricing-intro__inner h1 {
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+}
+
+.pricing-intro__inner p {
+  color: rgba(247, 249, 255, 0.78);
+  font-size: 1.15rem;
+}
+
+.pricing-plans {
+  background: #010103;
+}
+
+.pricing-plans__grid {
+  display: grid;
+  gap: 1.8rem;
+}
+
+.plan-card {
+  border-radius: 20px;
+  border: 1px solid rgba(0, 255, 224, 0.08);
+  background: rgba(10, 10, 10, 0.85);
+  padding: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  box-shadow: 0 35px 90px rgba(0, 0, 0, 0.35);
+  min-height: 100%;
+}
+
+.plan-card h2 {
+  margin: 0;
+  font-size: 1.9rem;
+  color: #00ffe0;
+}
+
+.plan-card__price {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0.35rem 0 0.75rem;
+}
+
+.plan-card__ideal {
+  color: #c7c7c7;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.plan-card__features {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.plan-card__features li {
+  position: relative;
+  padding-left: 1.6rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.plan-card__features li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: #00ffe0;
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+
+.plan-card__cta {
+  width: 100%;
+  text-align: center;
+}
+
+.pricing-faq {
+  background: #070709;
+}
+
+.pricing-faq__content {
+  max-width: 840px;
+  margin: 0 auto;
+  display: grid;
+  gap: 2rem;
+  text-align: left;
+}
+
+.pricing-faq__content h2 {
+  font-size: 2rem;
+}
+
+.pricing-faq__items {
+  display: grid;
+  gap: 1.8rem;
+}
+
+.pricing-faq__items article {
+  background: rgba(12, 12, 12, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 1.75rem;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+}
+
+.pricing-faq__items h3 {
+  margin: 0 0 0.6rem;
+  color: #00ffe0;
+}
+
+.pricing-faq__items p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.5;
+}
+
+.pricing-checklist {
+  background: #000;
+}
+
+.pricing-checklist__inner {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.pricing-checklist__inner ul {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  gap: 0.85rem;
+  text-align: left;
+}
+
+.pricing-checklist__inner li {
+  padding-left: 1.75rem;
+  position: relative;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.pricing-checklist__inner li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #00ffe0;
+  font-weight: 600;
+}
+
+.pricing-checklist__footer {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+}
+
+@media (min-width: 960px) {
+  .pricing-plans__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .plan-card__price {
+    font-size: 2.2rem;
+  }
+}
